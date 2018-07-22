@@ -1,0 +1,73 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> <strong>Danh sách khách hàng</strong>
+                <div class="card-header-actions">
+                    <a class="card-header-action" href="javascript:void(0)" (click)="addCustomer()"
+                       target="_blank"><i class="fa fa-plus fa-lg"></i> Thêm mới</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <form novalidate (ngSubmit)="searchCustomer()" #form="ngForm">
+                    <div class="form-group row">
+                        <div class="col-md-10">
+                            <input [(ngModel)]="customersService.search.key" type="text" id="key" name="key"
+                                   class="form-control"
+                                   placeholder="Tìm kiếm theo MÃ, TÊN, EMAIL, SỐ ĐIỆN THOẠI ...">
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" (click)="searchCustomer()"
+                                    class="btn btn-primary">Tìm kiếm
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                <table class="table table-striped table-sm">
+                    <thead>
+                    <tr>
+                        <th>Mã</th>
+                        <th>Tên</th>
+                        <th>Điện thoại</th>
+                        <th>Email</th>
+                        <th>Địa chỉ</th>
+                        <th class="text-right">Tác vụ</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let cus of customers">
+                        <td>{{cus.code}}</td>
+                        <td>{{cus.name}}</td>
+                        <td>{{cus.phone}}</td>
+                        <td>{{cus.email}}</td>
+                        <td>{{cus.address}}</td>
+                        <td class="text-right">
+                            <button (click)="editCustomer(cus.id)" class="btn btn-sm btn-ghost-primary"
+                                    type="button">Sửa
+                            </button>
+                            <button (click)="openModal(template,cus)" class="btn btn-sm btn-ghost-danger"
+                                    type="button">Xóa
+                            </button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="customersService.search.page"
+                            (pageChanged)="pageChanged($event)"
+                            class="pagination-sm pull-right" [maxSize]="6"
+                            previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
+                            lastText="&raquo;"></pagination>
+            </div>
+        </div>
+    </div>
+    <!--/.col-->
+</div>
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Bạn có chắc chắn muốn XÓA KHÁCH HÀNG này!?</p>
+        <div class="btn-group btn-group-toggle">
+            <button type="button" class="btn btn-warning" (click)="confirm()">Yes</button>
+            <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+        </div>
+    </div>
+</ng-template>

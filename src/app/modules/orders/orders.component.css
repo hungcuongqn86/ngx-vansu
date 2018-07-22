@@ -1,0 +1,7 @@
+.pager li.btn:active {
+    box-shadow: none;
+}
+
+.table p {
+    margin-bottom: 0;
+}

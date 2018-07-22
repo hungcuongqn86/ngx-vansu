@@ -1,0 +1,122 @@
+<!-- Breadcrumb -->
+<ol class="breadcrumb">
+    <app-breadcrumb></app-breadcrumb>
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+            <a class="btn" href="javascript:void(0)"><i
+                    class="fa fa-check-square"></i> &nbsp;Cập nhật</a>
+            <a class="btn" href="javascript:void(0)" (click)="backlist()"
+               target="_blank"><i class="fa fa-arrow-left"></i> &nbsp;Quay lại</a>
+        </div>
+    </li>
+</ol>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong>Chi tiết đơn hàng</strong>
+                </div>
+                <div class="card-body">
+                    <form novalidate #form="ngForm" class="form-horizontal">
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                Mã đơn
+                            </label>
+                            <div class="col-md-3">
+                                {{ordersService.order.order_number}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                Ngày đặt
+                            </label>
+                            <div class="col-md-3">
+                                {{ordersService.order.created_at}}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                Sim
+                            </label>
+                            <div class="col-md-9">
+                                <p><i class="fa fa-terminal"></i>
+                                    {{ordersService.order.sim.sim_number}}</p>
+                                <p><i class="fa fa-usd"></i>
+                                    {{ordersService.order.sim.price}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label">
+                                Khách hàng
+                            </label>
+                            <div class="col-md-9">
+                                <p><i class="fa fa-user"></i> {{ordersService.order.customer.customer_name}}</p>
+                                <p><i class="fa fa-phone"></i> {{ordersService.order.customer.customer_tel}}</p>
+                                <p *ngIf="ordersService.order.customer.customer_addr"><i class="fa fa-info"></i>
+                                    {{ordersService.order.customer.customer_addr}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-3 col-form-label" for="inline-radios">
+                                Trạng thái đơn hàng
+                            </label>
+                            <div class="col-md-9 col-form-label">
+                                <div class="form-check" id="inline-radios"><input
+                                        class="form-check-input" id="inlineRadio1" name="inline-radios" type="radio"
+                                        value="option1"><label class="form-check-label" for="inlineRadio1">Giữ
+                                    chỗ</label>
+                                </div>
+                                <div class="form-check"><input class="form-check-input"
+                                                               id="inlineRadio2"
+                                                               name="inline-radios" type="radio"
+                                                               value="option2"><label
+                                        class="form-check-label" for="inlineRadio2">Đang giao dịch</label></div>
+                                <div class="form-check"><input class="form-check-input"
+                                                               id="inlineRadio3"
+                                                               name="inline-radios" type="radio"
+                                                               value="option3"><label
+                                        class="form-check-label" for="inlineRadio3">Đã bán</label></div>
+                                <div class="form-check"><input class="form-check-input"
+                                                               id="inlineRadio4"
+                                                               name="inline-radios" type="radio"
+                                                               value="option4"><label
+                                        class="form-check-label" for="inlineRadio4">Hủy order</label></div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-12 col-form-label">
+                                Đơn cùng Sim
+                            </label>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-12">
+                                <table *ngIf="ordersService.order.sim" class="table table-striped table-sm">
+                                    <thead>
+                                    <tr>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Khách hàng</th>
+                                        <th>Số điện thoại</th>
+                                        <th>Ngày order</th>
+                                        <th>Trạng thái</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let order of ordersService.order.sim.order">
+                                        <td>{{order.order_number}}</td>
+                                        <td>{{order.customer.customer_name}}</td>
+                                        <td>{{order.customer.customer_tel}}</td>
+                                        <td>{{order.created_at}}</td>
+                                        <td>{{order.order_status_name}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div><!--/.row-->
+</div>

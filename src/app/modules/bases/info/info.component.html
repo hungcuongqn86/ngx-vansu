@@ -1,0 +1,77 @@
+<form novalidate #form="ngForm" class="form-horizontal">
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="sim_number">
+            Số sim hiển thị <code class="highlighter-rouge">*</code>
+        </label>
+        <div class="col-md-9">
+            <input [(ngModel)]="basesService.sim.sim_number" #sim_number="ngModel" type="text" id="sim_number"
+                   name="sim_number"
+                   required
+                   class="form-control"
+                   placeholder="Số sim">
+            <div [hidden]="sim_number.valid || sim_number.untouched">
+                                <span *ngIf="sim_number.errors && sim_number.errors.required"
+                                      class="badge badge-warning">
+                                    Phải nhập Số sim hiển thị!
+                                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="sim_number_standard">
+            Số sim <code class="highlighter-rouge">*</code>
+        </label>
+        <div class="col-md-9">
+            <input [(ngModel)]="basesService.sim.sim_number_standard" #sim_number_standard="ngModel" type="text"
+                   id="sim_number_standard" name="sim_number_standard"
+                   required
+                   class="form-control"
+                   placeholder="Số sim">
+            <div [hidden]="sim_number_standard.valid || sim_number_standard.untouched">
+                                <span *ngIf="sim_number_standard.errors && sim_number_standard.errors.required"
+                                      class="badge badge-warning">
+                                    Phải nhập Số sim!
+                                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="telco_id">
+            Telco <code class="highlighter-rouge">*</code>
+        </label>
+        <div class="col-md-9">
+            <input [(ngModel)]="basesService.sim.telco_id" #telco_id="ngModel" type="text" id="telco_id" name="telco_id"
+                   class="form-control"
+                   required
+                   placeholder="Telco">
+            <div [hidden]="telco_id.valid || telco_id.untouched">
+                                <span *ngIf="telco_id.errors && telco_id.errors.required" class="badge badge-warning">
+                                    Phải nhập Telco!
+                                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="price">Giá (VNĐ)</label>
+        <div class="col-md-9">
+            <input [(ngModel)]="basesService.sim.price" #price="ngModel" type="text" id="price" name="price"
+                   class="form-control"
+                   required
+                   placeholder="Giá (VNĐ)">
+            <div [hidden]="price.valid || price.untouched">
+                                <span *ngIf="price.errors && price.errors.required" class="badge badge-warning">
+                                    Phải nhập Giá!
+                                </span></div>
+
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="sold_at">Ngày bán</label>
+        <div class="col-md-9">
+            <input [(ngModel)]="basesService.sim.sold_at" type="text" id="sold_at"
+                   name="sold_at"
+                   class="form-control"
+                   placeholder="Ngày bán">
+        </div>
+    </div>
+</form>
