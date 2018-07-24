@@ -37,6 +37,13 @@ export class DetailComponent implements OnInit {
             });
     }
 
+    public updateOrderStatus() {
+        this.ordersService.updateOrderStatus()
+            .subscribe(data => {
+                this.backlist();
+            });
+    }
+
     public backlist() {
         this.router.navigate(['/orders']);
     }

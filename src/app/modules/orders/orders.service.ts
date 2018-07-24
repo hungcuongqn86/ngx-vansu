@@ -120,4 +120,12 @@ export class OrdersService {
                 catchError(this.handleError('getOrder', []))
             );
     }
+
+    public updateOrderStatus(): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/order/update`;
+        return this.http.put<Sim>(url, this.order)
+            .pipe(
+                catchError(this.handleError('updateOrderStatus', this.order))
+            );
+    }
 }
