@@ -4,7 +4,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="javascript:void(0)" (click)="updateOrderStatus()"><i
+            <a *ngIf="ordersService.order && ordersService.order.sim && (!ordersService.order.sim.sold_at)" class="btn" href="javascript:void(0)" (click)="updateOrderStatus()"><i
                     class="fa fa-check-square"></i> &nbsp;Cập nhật</a>
             <a class="btn" href="javascript:void(0)" (click)="backlist()"
                target="_blank"><i class="fa fa-arrow-left"></i> &nbsp;Quay lại</a>
@@ -19,45 +19,56 @@
                     <strong>Chi tiết đơn hàng</strong>
                 </div>
                 <div class="card-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card card-accent-primary">
+                                <div class="card-header">
+                                    <i class="fa fa-info"></i>Thông tin chung
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">Mã đơn</label>
+                                        <label class="col-md-8 col-form-label">{{ordersService.order.order_number}}</label>
+                                        <label class="col-md-4 col-form-label">Ngày đặt</label>
+                                        <label class="col-md-8 col-form-label">{{ordersService.order.created_at}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--/.col-->
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card card-accent-primary">
+                                <div class="card-header">
+                                    <i class="fa fa-user"></i> Khách hàng
+                                </div>
+                                <div class="card-body">
+                                    <div class="form-group row">
+                                        <label class="col-md-4 col-form-label">Tên</label>
+                                        <label class="col-md-8 col-form-label">{{ordersService.order.customer.customer_name}}</label>
+                                        <label class="col-md-4 col-form-label">Mobile</label>
+                                        <label class="col-md-8 col-form-label">{{ordersService.order.customer.customer_tel}}</label>
+                                        <label *ngIf="ordersService.order.customer.customer_addr" class="col-md-4 col-form-label">Địa chỉ</label>
+                                        <label *ngIf="ordersService.order.customer.customer_addr" class="col-md-8 col-form-label">{{ordersService.order.customer.customer_addr}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--/.col-->
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card card-accent-primary">
+                                <div class="card-header">
+                                    <i class="fa fa-puzzle-piece"></i> Sim
+                                </div>
+                                <div class="card-body">
+                                    <div *ngIf="ordersService.order.sim" class="form-group row">
+                                        <label class="col-md-4 col-form-label">Sim số</label>
+                                        <label class="col-md-8 col-form-label">{{ordersService.order.sim.sim_number}}</label>
+                                        <label class="col-md-4 col-form-label">Giá</label>
+                                        <label class="col-md-8 col-form-label">{{ordersService.order.sim.price}}</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div><!--/.col-->
+                    </div>
                     <form novalidate #form="ngForm" class="form-horizontal">
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label">
-                                Mã đơn
-                            </label>
-                            <div class="col-md-3">
-                                {{ordersService.order.order_number}}
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label">
-                                Ngày đặt
-                            </label>
-                            <div class="col-md-3">
-                                {{ordersService.order.created_at}}
-                            </div>
-                        </div>
-                        <div *ngIf="ordersService.order.sim" class="form-group row">
-                            <label class="col-md-3 col-form-label">
-                                Sim
-                            </label>
-                            <div class="col-md-9">
-                                <p><i class="fa fa-terminal"></i>
-                                    {{ordersService.order.sim.sim_number}}</p>
-                                <p><i class="fa fa-usd"></i>
-                                    {{ordersService.order.sim.price}}</p>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-md-3 col-form-label">
-                                Khách hàng
-                            </label>
-                            <div class="col-md-9">
-                                <p><i class="fa fa-user"></i> {{ordersService.order.customer.customer_name}}</p>
-                                <p><i class="fa fa-phone"></i> {{ordersService.order.customer.customer_tel}}</p>
-                                <p *ngIf="ordersService.order.customer.customer_addr"><i class="fa fa-map-marker"></i>
-                                    {{ordersService.order.customer.customer_addr}}</p>
-                            </div>
-                        </div>
                         <div class="form-group row">
                             <label class="col-md-3 col-form-label">
                                 Trạng thái đơn hàng
@@ -80,7 +91,7 @@
                         </div>
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <table *ngIf="ordersService.order.sim" class="table table-striped table-sm">
+                                <table *ngIf="ordersService.order.sim" class="table table-striped table-bordered table-sm">
                                     <thead>
                                     <tr>
                                         <th>Mã đơn hàng</th>
