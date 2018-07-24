@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BasesService} from '../bases.service';
+import {BasesService, Telco} from '../bases.service';
 
 @Component({
     selector: 'app-base-detail-info',
@@ -8,6 +8,16 @@ import {BasesService} from '../bases.service';
 })
 
 export class InfoComponent {
+    telco: Telco[];
+
     constructor(public basesService: BasesService) {
+        this.getTelco();
+    }
+
+    public getTelco() {
+        this.basesService.getTelco()
+            .subscribe(data => {
+                this.telco = data.data.category;
+            });
     }
 }

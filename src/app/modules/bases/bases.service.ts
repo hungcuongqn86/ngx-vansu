@@ -7,6 +7,7 @@ import {catchError} from 'rxjs/operators';
 import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
 import {Util} from '../../helper/lib';
 import {apiV1Url} from '../../const';
+import {Router} from '@angular/router';
 
 export interface Customer {
     id: number;
@@ -43,7 +44,7 @@ export interface Sim {
     sim_number: string;
     sim_number_standard: string;
     price: number;
-    telco_id: number;
+    telco_id: string;
     is_deleted: number;
     sold_at: string;
     created_at: string;
@@ -59,7 +60,7 @@ export class BasesService {
     public search = {partten: '', start_price: 0, end_price: null, page_size: 10, page: 1};
     public sim: Sim;
 
-    constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
+    constructor(private router: Router, private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('BasesService');
         if (!this.sim) {
             this.reset();
@@ -73,7 +74,7 @@ export class BasesService {
             , sim_number: null
             , sim_number_standard: null
             , price: null
-            , telco_id: null
+            , telco_id: ''
             , is_deleted: 0
             , sold_at: ''
             , created_at: ''
@@ -103,6 +104,14 @@ export class BasesService {
             );
     }
 
+    getTelco(): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/telco`;
+        return this.http.get<any>(url)
+            .pipe(
+                catchError(this.handleError('getOrderStatus', []))
+            );
+    }
+
     updateBase() {
         if (this.sim.id === null) {
             this.addBase(this.sim).subscribe(
@@ -120,21 +129,21 @@ export class BasesService {
     }
 
     private updateSuccess(res: any) {
-        if (res.success) {
-            // end loading
+        if (res.status) {
+            this.router.navigate(['/sim']);
         }
     }
 
-    addBase(sim: Sim): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/add`;
+    private addBase(sim: Sim): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/create`;
         return this.http.post<Sim>(url, sim)
             .pipe(
                 catchError(this.handleError('addBase', sim))
             );
     }
 
-    editBase(sim: Sim): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/update/${sim.id}`;
+    private editBase(sim: Sim): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/update`;
         return this.http.put<Sim>(url, sim)
             .pipe(
                 catchError(this.handleError('editBase', sim))
