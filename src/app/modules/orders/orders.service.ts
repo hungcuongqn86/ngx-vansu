@@ -79,7 +79,16 @@ export class OrdersService {
             , order_status_name: null
             , created_at: ''
             , updated_at: ''
-            , customer: null
+            , customer: {
+                id: null,
+                customer_name: null,
+                customer_tel: null,
+                customer_addr: null,
+                customer_dob: null,
+                is_deleted: 0,
+                created_at: '',
+                updated_at: ''
+            }
             , sim: null
         };
     }

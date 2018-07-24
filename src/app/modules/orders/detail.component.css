@@ -3,3 +3,7 @@
     max-height: 100px;
     margin: 15px 0;
 }
+
+p {
+    margin-bottom: 0;
+}

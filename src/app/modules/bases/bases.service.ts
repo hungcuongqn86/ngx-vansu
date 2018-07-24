@@ -134,7 +134,7 @@ export class BasesService {
         }
     }
 
-    private addBase(sim: Sim): Observable<any> {
+    public addBase(sim: Sim): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/create`;
         return this.http.post<Sim>(url, sim)
             .pipe(
@@ -142,7 +142,7 @@ export class BasesService {
             );
     }
 
-    private editBase(sim: Sim): Observable<any> {
+    public editBase(sim: Sim): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/update`;
         return this.http.put<Sim>(url, sim)
             .pipe(

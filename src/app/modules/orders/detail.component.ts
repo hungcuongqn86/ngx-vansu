@@ -9,10 +9,11 @@ import {OrdersService} from './orders.service';
 })
 
 export class DetailComponent implements OnInit {
+    orderstatus: any[];
+
     constructor(private router: Router, private route: ActivatedRoute
         , public ordersService: OrdersService) {
         this.route.params.subscribe(params => {
-            console.log(params);
             if (params['id']) {
                 this.ordersService.order.id = params['id'];
             }
@@ -20,12 +21,20 @@ export class DetailComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.getOrderStatus();
         if (this.ordersService.order.id !== null) {
             this.ordersService.getOrder(this.ordersService.order.id)
                 .subscribe(order => {
                     this.ordersService.order = order.data.order;
                 });
         }
+    }
+
+    public getOrderStatus() {
+        this.ordersService.getOrderStatus()
+            .subscribe(data => {
+                this.orderstatus = data.data.orderstatus;
+            });
     }
 
     public backlist() {
