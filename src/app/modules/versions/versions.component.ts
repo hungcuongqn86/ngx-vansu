@@ -39,7 +39,7 @@ export class VersionsComponent implements OnInit {
         this.router.navigate([`/version/${id}`]);
     }
 
-    public deleteBase() {
+    public deleteVersion() {
         if (this.version) {
             this.version.is_deleted = 1;
             this.versionsService.editVersion(this.version)
@@ -57,13 +57,13 @@ export class VersionsComponent implements OnInit {
             });
     }
 
-    openModal(template: TemplateRef<any>, sim) {
-        this.version = sim;
+    openModal(template: TemplateRef<any>, version) {
+        this.version = version;
         this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
     }
 
     confirm(): void {
-        this.deleteBase();
+        this.deleteVersion();
         this.modalRef.hide();
     }
 
