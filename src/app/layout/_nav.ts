@@ -5,6 +5,11 @@ export const navItems = [
         icon: 'icon-speedometer'
     },
     {
+        name: 'Version',
+        url: '/version',
+        icon: 'icon-star'
+    },
+    {
         name: 'Sim',
         url: '/sim',
         icon: 'icon-puzzle'

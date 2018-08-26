@@ -4,6 +4,7 @@ import {AppGuard} from './app.guard.service';
 import {Error404Component} from './messages/error404.component';
 import {LoginComponent} from './auth/login.component';
 import {DefaultLayoutComponent} from './layout';
+import {VersionsModule} from './modules/versions/versions.module';
 
 const appRoutes: Routes = [
     {
@@ -18,6 +19,12 @@ const appRoutes: Routes = [
                 loadChildren: './modules/dashboard/dashboard.module#DashboardModule',
                 data: {
                     title: 'Bảng điều khiển'
+                }
+            }, {
+                path: 'version',
+                loadChildren: './modules/versions/versions.module#VersionsModule',
+                data: {
+                    title: 'Version'
                 }
             }
             , {
