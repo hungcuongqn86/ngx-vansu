@@ -35,6 +35,13 @@ const appRoutes: Routes = [
                 }
             }
             , {
+                path: 'agency',
+                loadChildren: './modules/agency/agency.module#AgencyModule',
+                data: {
+                    title: 'Agency'
+                }
+            }
+            , {
                 path: 'orders',
                 loadChildren: './modules/orders/orders.module#OrdersModule',
                 data: {
