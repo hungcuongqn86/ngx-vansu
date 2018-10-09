@@ -108,7 +108,7 @@ export class BasesService {
         const url = Util.getUri(apiV1Url) + `sim/telco`;
         return this.http.get<any>(url)
             .pipe(
-                catchError(this.handleError('getOrderStatus', []))
+                catchError(this.handleError('getTelco', []))
             );
     }
 

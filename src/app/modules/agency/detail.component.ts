@@ -9,27 +9,38 @@ import {AgencyService} from './agency.service';
 })
 
 export class DetailComponent implements OnInit {
+    arrDiscount: string[];
+
     constructor(private router: Router, private route: ActivatedRoute
-        , public basesService: AgencyService) {
+        , public agencyService: AgencyService) {
         this.route.params.subscribe(params => {
             if (params['id']) {
-                this.basesService.sim.id = params['id'];
+                this.agencyService.agency.id = params['id'];
             }
         });
+
+        this.getDiscount();
     }
 
     ngOnInit() {
-        if (this.basesService.sim.id !== null) {
-            this.basesService.getBase(this.basesService.sim.id)
-                .subscribe(sim => {
-                    this.basesService.sim = sim.data.sim;
+        if (this.agencyService.agency.id !== null) {
+            this.agencyService.getAgency(this.agencyService.agency.id)
+                .subscribe(agency => {
+                    this.agencyService.agency = agency.data.sim;
                 });
         } else {
-            this.basesService.reset();
+            this.agencyService.reset();
         }
     }
 
+    public getDiscount() {
+        this.agencyService.getDiscount()
+            .subscribe(data => {
+                this.arrDiscount = data.data.discount;
+            });
+    }
+
     public backlist() {
-        this.router.navigate(['/sim']);
+        this.router.navigate(['/agency']);
     }
 }

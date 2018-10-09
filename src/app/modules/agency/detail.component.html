@@ -4,7 +4,8 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="javascript:void(0)" (click)="basesService.updateBase()"><i class="fa fa-check-square"></i> &nbsp;Cập nhật</a>
+            <a class="btn" href="javascript:void(0)" (click)="agencyService.updateAgency()"><i
+                    class="fa fa-check-square"></i> &nbsp;Cập nhật</a>
             <a class="btn" href="javascript:void(0)" (click)="backlist()"
                target="_blank"><i class="fa fa-arrow-left"></i> &nbsp;Quay lại</a>
         </div>
@@ -16,11 +17,70 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Chi tiết sim</strong>
+                    <strong>Chi tiết đại lý</strong>
                 </div>
                 <div class="card-body">
                     <div class="col-md-12 mb-4">
-
+                        <form novalidate #form="ngForm" class="form-horizontal">
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="code">
+                                    Mã <code class="highlighter-rouge">*</code>
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="agencyService.agency.code" #code="ngModel" type="text"
+                                           id="code"
+                                           name="code"
+                                           required
+                                           class="form-control"
+                                           placeholder="Mã đại lý">
+                                    <div [hidden]="code.valid || code.untouched">
+                                <span *ngIf="code.errors && code.errors.required"
+                                      class="badge badge-warning">
+                                    Phải nhập Mã đại lý!
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="name">
+                                    Tên <code class="highlighter-rouge">*</code>
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="agencyService.agency.name"
+                                           #name="ngModel" type="text"
+                                           id="name" name="name"
+                                           required
+                                           class="form-control"
+                                           placeholder="Tên đại lý">
+                                    <div [hidden]="name.valid || name.untouched">
+                                <span *ngIf="name.errors && name.errors.required"
+                                      class="badge badge-warning">
+                                    Phải nhập Tên đại lý!
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="discount">
+                                    Tỉ lệ chiết khấu <code class="highlighter-rouge">*</code>
+                                </label>
+                                <div class="col-md-9">
+                                    <select [(ngModel)]="agencyService.agency.discount" #discount="ngModel" id="discount"
+                                            name="discount"
+                                            required
+                                            class="form-control">
+                                        <option value="">Chọn giá trị</option>
+                                        <option *ngFor="let item of arrDiscount" value="{{item}}">{{item}}
+                                        </option>
+                                    </select>
+                                    <div [hidden]="discount.valid || discount.untouched">
+                                <span *ngIf="discount.errors && discount.errors.required" class="badge badge-warning">
+                                    Phải chọn Tỉ lệ chiết khấu!
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
                     </div><!--/.col-->
                 </div>
             </div>

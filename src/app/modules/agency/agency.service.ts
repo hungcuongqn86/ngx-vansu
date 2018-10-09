@@ -58,23 +58,32 @@ export class AgencyService {
             );
     }
 
-    getBase(id): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/detail/${id}`;
+    getAgency(id): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/agency/detail/${id}`;
         return this.http.get<any>(url)
             .pipe(
-                catchError(this.handleError('getBase', []))
+                catchError(this.handleError('getAgency', []))
             );
     }
 
-    updateBase() {
+
+    getDiscount(): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/agency/discount`;
+        return this.http.get<any>(url)
+            .pipe(
+                catchError(this.handleError('getDiscount', []))
+            );
+    }
+
+    updateAgency() {
         if (this.agency.id === null) {
-            this.addBase(this.agency).subscribe(
+            this.addAgency(this.agency).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
             );
         } else {
-            this.editBase(this.agency).subscribe(
+            this.editAgency(this.agency).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
@@ -88,19 +97,19 @@ export class AgencyService {
         }
     }
 
-    public addBase(sim: Agency): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `agency/create`;
+    public addAgency(sim: Agency): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/agency/create`;
         return this.http.post<Agency>(url, sim)
             .pipe(
-                catchError(this.handleError('addBase', sim))
+                catchError(this.handleError('addAgency', sim))
             );
     }
 
-    public editBase(sim: Agency): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `agency/update`;
+    public editAgency(sim: Agency): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/agency/update`;
         return this.http.put<Agency>(url, sim)
             .pipe(
-                catchError(this.handleError('editBase', sim))
+                catchError(this.handleError('editAgency', sim))
             );
     }
 }
