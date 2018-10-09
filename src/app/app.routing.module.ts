@@ -38,7 +38,7 @@ const appRoutes: Routes = [
                 path: 'agency',
                 loadChildren: './modules/agency/agency.module#AgencyModule',
                 data: {
-                    title: 'Agency'
+                    title: 'Đại lý'
                 }
             }
             , {

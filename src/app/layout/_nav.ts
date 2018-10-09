@@ -13,18 +13,11 @@ export const navItems = [
         name: 'Sim',
         url: '/sim',
         icon: 'icon-puzzle',
-        children: [
-            {
-                name: 'Sim',
-                url: '/sim',
-                icon: 'cui-arrow-right'
-            },
-            {
-                name: 'Đại lý',
-                url: '/agency',
-                icon: 'cui-arrow-right'
-            }
-        ]
+    },
+    {
+        name: 'Agency',
+        url: '/agency',
+        icon: 'cui-graph'
     },
     {
         name: 'Orders',

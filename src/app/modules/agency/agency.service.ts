@@ -9,90 +9,52 @@ import {Util} from '../../helper/lib';
 import {apiV1Url} from '../../const';
 import {Router} from '@angular/router';
 
-export interface Customer {
+export interface Agency {
     id: number;
-    customer_name: string;
-    customer_tel: string;
-    customer_addr: string;
-    customer_dob: string;
+    code: string;
+    name: string;
+    discount: string;
     is_deleted: number;
     created_at: string;
     updated_at: string;
-}
-
-export interface Order {
-    id: number;
-    sim_id: number;
-    customer_id: number;
-    order_number: string;
-    order_status: number;
-    order_status_name: string;
-    created_at: string;
-    updated_at: string;
-    customer: Customer;
-}
-
-export interface Telco {
-    id: number;
-    telco_name: string;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface Sim {
-    id: number;
-    sim_number: string;
-    sim_number_standard: string;
-    price: number;
-    telco_id: string;
-    is_deleted: number;
-    sold_at: string;
-    created_at: string;
-    updated_at: string;
-    order: Array<Order>;
-    category: Telco;
 }
 
 @Injectable()
 export class AgencyService {
     static instance: AgencyService;
     private handleError: HandleError;
-    public search = {partten: '', start_price: 0, end_price: null, page_size: 10, page: 1};
-    public sim: Sim;
+    public search = {key: '', page_size: 10, page: 1};
+    public agency: Agency;
 
     constructor(private router: Router, private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
-        this.handleError = httpErrorHandler.createHandleError('BasesService');
-        if (!this.sim) {
+        this.handleError = httpErrorHandler.createHandleError('AgencyService');
+        if (!this.agency) {
             this.reset();
         }
         return AgencyService.instance = AgencyService.instance || this;
     }
 
     reset() {
-        this.sim = {
+        this.agency = {
             id: null
-            , sim_number: null
-            , sim_number_standard: null
-            , price: null
-            , telco_id: ''
+            , code: null
+            , name: null
+            , discount: null
             , is_deleted: 0
-            , sold_at: ''
             , created_at: ''
             , updated_at: ''
-            , order: []
-            , category: null
         };
     }
 
-    getBases(search): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/search`;
+    getAgencies(search): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `sim/agency/search`;
         let params = new HttpParams();
         Object.keys(search).map((key) => {
             params = params.append(key, search[key]);
         });
         return this.http.get<any>(url, {params: params})
             .pipe(
-                catchError(this.handleError('getBases', []))
+                catchError(this.handleError('getAgencies', []))
             );
     }
 
@@ -104,23 +66,15 @@ export class AgencyService {
             );
     }
 
-    getTelco(): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/telco`;
-        return this.http.get<any>(url)
-            .pipe(
-                catchError(this.handleError('getOrderStatus', []))
-            );
-    }
-
     updateBase() {
-        if (this.sim.id === null) {
-            this.addBase(this.sim).subscribe(
+        if (this.agency.id === null) {
+            this.addBase(this.agency).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
             );
         } else {
-            this.editBase(this.sim).subscribe(
+            this.editBase(this.agency).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
@@ -130,21 +84,21 @@ export class AgencyService {
 
     private updateSuccess(res: any) {
         if (res.status) {
-            this.router.navigate(['/sim']);
+            this.router.navigate(['/agency']);
         }
     }
 
-    public addBase(sim: Sim): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/create`;
-        return this.http.post<Sim>(url, sim)
+    public addBase(sim: Agency): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `agency/create`;
+        return this.http.post<Agency>(url, sim)
             .pipe(
                 catchError(this.handleError('addBase', sim))
             );
     }
 
-    public editBase(sim: Sim): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/update`;
-        return this.http.put<Sim>(url, sim)
+    public editBase(sim: Agency): Observable<any> {
+        const url = Util.getUri(apiV1Url) + `agency/update`;
+        return this.http.put<Agency>(url, sim)
             .pipe(
                 catchError(this.handleError('editBase', sim))
             );

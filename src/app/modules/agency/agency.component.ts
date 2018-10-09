@@ -1,67 +1,65 @@
 import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Sim, AgencyService} from './agency.service';
+import {Agency, AgencyService} from './agency.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {UploaderService} from '../../uploader.service';
 
 @Component({
     selector: 'app-agency',
     templateUrl: './agency.component.html',
     styleUrls: ['./agency.component.css'],
-    providers: [UploaderService],
     encapsulation: ViewEncapsulation.None
 })
 
 export class AgencyComponent implements OnInit {
-    sim: Sim;
-    Sims: Sim[];
+    agency: Agency;
+    agencies: Agency[];
     totalItems = 0;
     modalRef: BsModalRef;
 
-    constructor(private uploaderService: UploaderService, public basesService: AgencyService,
+    constructor( public agencyService: AgencyService,
                 private router: Router, private modalService: BsModalService) {
 
     }
 
     ngOnInit() {
-        this.searchBases();
+        this.searchAgency();
     }
 
     pageChanged(event: any): void {
-        this.basesService.search.page = event.page;
-        this.searchBases();
+        this.agencyService.search.page = event.page;
+        this.searchAgency();
     }
 
     public addBase() {
-        this.basesService.sim.id = null;
-        this.router.navigate(['/sim/add']);
+        this.agencyService.agency.id = null;
+        this.router.navigate(['/agency/add']);
     }
 
     public editBase(id) {
-        this.router.navigate([`/sim/${id}`]);
+        this.router.navigate([`/agency/${id}`]);
     }
 
     public deleteBase() {
-        if (this.sim) {
-            this.sim.is_deleted = 1;
-            this.basesService.editBase(this.sim)
+        if (this.agency) {
+            this.agency.is_deleted = 1;
+            this.agencyService.editBase(this.agency)
                 .subscribe(res => {
-                    this.searchBases();
+                    this.searchAgency();
                 });
         }
     }
 
-    public searchBases() {
-        this.basesService.getBases(this.basesService.search)
-            .subscribe(bases => {
-                this.Sims = bases.data.data;
-                this.totalItems = bases.data.total;
+    public searchAgency() {
+        this.agencyService.getAgencies(this.agencyService.search)
+            .subscribe(agencies => {
+                this.agencies = agencies.data.data;
+                this.totalItems = agencies.data.total;
             });
     }
 
-    openModal(template: TemplateRef<any>, sim) {
-        this.sim = sim;
+    openModal(template: TemplateRef<any>, agency) {
+        this.agency = agency;
         this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
     }
 
@@ -72,19 +70,5 @@ export class AgencyComponent implements OnInit {
 
     decline(): void {
         this.modalRef.hide();
-    }
-
-    public importExcel(input: HTMLInputElement) {
-        const file = input.files[0];
-        if (file) {
-            this.uploaderService.upload(file).subscribe(
-                res => {
-                    if (res.status) {
-                        this.searchBases();
-                    }
-                    input.value = null;
-                }
-            );
-        }
     }
 }
