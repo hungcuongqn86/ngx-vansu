@@ -26,7 +26,7 @@ export class DetailComponent implements OnInit {
         if (this.agencyService.agency.id !== null) {
             this.agencyService.getAgency(this.agencyService.agency.id)
                 .subscribe(agency => {
-                    this.agencyService.agency = agency.data.sim;
+                    this.agencyService.agency = agency.data.agency;
                 });
         } else {
             this.agencyService.reset();
