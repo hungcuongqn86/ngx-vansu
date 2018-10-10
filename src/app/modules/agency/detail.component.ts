@@ -36,7 +36,7 @@ export class DetailComponent implements OnInit {
     public getDiscount() {
         this.agencyService.getDiscount()
             .subscribe(data => {
-                this.arrDiscount = data.data.discount;
+                this.arrDiscount = data.data;
             });
     }
 

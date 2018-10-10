@@ -43,7 +43,7 @@ export class AgencyComponent implements OnInit {
     public deleteBase() {
         if (this.agency) {
             this.agency.is_deleted = 1;
-            this.agencyService.editBase(this.agency)
+            this.agencyService.editAgency(this.agency)
                 .subscribe(res => {
                     this.searchAgency();
                 });
