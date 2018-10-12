@@ -39,11 +39,23 @@ export interface Telco {
     updated_at: string;
 }
 
+export interface Agency {
+    id: number;
+    code: string;
+    name: string;
+    discount: string;
+    status: number;
+    is_deleted: number;
+    created_at: string;
+    updated_at: string;
+}
+
 export interface Sim {
     id: number;
     sim_number: string;
     sim_number_standard: string;
     price: number;
+    sale_price: number;
     telco_id: string;
     is_deleted: number;
     sold_at: string;
@@ -51,6 +63,7 @@ export interface Sim {
     updated_at: string;
     order: Array<Order>;
     category: Telco;
+    agency: Agency;
 }
 
 @Injectable()
@@ -74,6 +87,7 @@ export class BasesService {
             , sim_number: null
             , sim_number_standard: null
             , price: null
+            , sale_price: null
             , telco_id: ''
             , is_deleted: 0
             , sold_at: ''
@@ -81,6 +95,7 @@ export class BasesService {
             , updated_at: ''
             , order: []
             , category: null
+            , agency: null
         };
     }
 

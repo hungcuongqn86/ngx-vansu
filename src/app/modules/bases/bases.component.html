@@ -39,7 +39,9 @@
                         <tr>
                             <th>Telco</th>
                             <th>Sim số</th>
-                            <th class="text-right">Giá</th>
+                            <th>Đại lý</th>
+                            <th class="text-right">Giá đại lý</th>
+                            <th class="text-right">Giá bán</th>
                             <th class="text-right">Ngày bán</th>
                             <th class="text-right">Tác vụ</th>
                         </tr>
@@ -48,7 +50,9 @@
                         <tr *ngFor="let sim of Sims">
                             <td>{{sim.category.telco_name}}</td>
                             <td>{{sim.sim_number}}</td>
+                            <td>{{sim.agency.name}}</td>
                             <td class="text-right">{{sim.price}}</td>
+                            <td class="text-right">{{sim.sale_price}}</td>
                             <td class="text-right">{{sim.sold_at}}</td>
                             <td class="text-right">
                                 <button (click)="editBase(sim.id)" class="btn btn-sm btn-ghost-primary" type="button">
