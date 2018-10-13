@@ -4,7 +4,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="javascript:void(0)" (click)="agencyService.updateAgency()"><i
+            <a class="btn" href="javascript:void(0)" (click)="updateAgency(template)"><i
                     class="fa fa-check-square"></i> &nbsp;Cập nhật</a>
             <a class="btn" href="javascript:void(0)" (click)="backlist()"
                target="_blank"><i class="fa fa-arrow-left"></i> &nbsp;Quay lại</a>
@@ -65,7 +65,9 @@
                                     Tỉ lệ chiết khấu <code class="highlighter-rouge">*</code>
                                 </label>
                                 <div class="col-md-9">
-                                    <select [(ngModel)]="agencyService.agency.discount" #discount="ngModel" id="discount"
+                                    <select [(ngModel)]="agencyService.agency.discount" #discount="ngModel"
+                                            (change)="changeDiscount()"
+                                            id="discount"
                                             name="discount"
                                             required
                                             class="form-control">
@@ -87,3 +89,12 @@
         </div>
     </div><!--/.row-->
 </div>
+<ng-template #template>
+    <div class="modal-body text-center">
+        <p>Bạn có muốn cập nhật lại GIÁ cho SIM chưa bán của đại lý này!?</p>
+        <div class="btn-group btn-group-toggle">
+            <button type="button" class="btn btn-warning" (click)="confirm()">Yes</button>
+            <button type="button" class="btn btn-primary" (click)="decline()">No</button>
+        </div>
+    </div>
+</ng-template>

@@ -18,6 +18,7 @@ export interface Agency {
     is_deleted: number;
     created_at: string;
     updated_at: string;
+    changeDiscount: number;
 }
 
 @Injectable()
@@ -45,6 +46,7 @@ export class AgencyService {
             , is_deleted: 0
             , created_at: ''
             , updated_at: ''
+            , changeDiscount: 0
         };
     }
 
