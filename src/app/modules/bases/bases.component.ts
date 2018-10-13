@@ -80,7 +80,9 @@ export class BasesComponent implements OnInit {
             this.uploaderService.upload(file).subscribe(
                 res => {
                     if (res.status) {
-                        this.searchBases();
+                        // this.searchBases();
+                        // res.data.url = decodeURIComponent(res.data.url);
+                        console.log(res);
                     }
                     input.value = null;
                 }

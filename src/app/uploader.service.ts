@@ -9,7 +9,7 @@ import {catchError, last, map, tap} from 'rxjs/operators';
 
 import {LoadingService} from './loading.service';
 import {Util} from './helper/lib';
-import {apiV1Url} from './const';
+import {apiUrl} from './const';
 
 export interface Res {
     type: string;
@@ -40,7 +40,7 @@ export class UploaderService {
             return;
         }
         // XHR progress events.
-        const url = Util.getUri(apiV1Url) + `sim/import`;
+        const url = Util.getUri(apiUrl) + `sys/upload`;
         const formData = new FormData();
         formData.append('fileimport', file);
         const req = new HttpRequest('POST', url, formData, {
