@@ -10,6 +10,11 @@ export const navItems = [
         icon: 'icon-star'
     },
     {
+        name: 'Member',
+        url: '/member',
+        icon: 'icon-emotsmile'
+    },
+    {
         name: 'Sim',
         url: '/sim',
         icon: 'icon-puzzle',
@@ -24,7 +29,7 @@ export const navItems = [
         url: '/orders',
         icon: 'cui-basket-loaded'
     },
-    {
+    /*{
         name: 'Customers',
         // url: '/customers',
         url: '/#',
@@ -35,5 +40,5 @@ export const navItems = [
         // url: '/settings',
         url: '/#',
         icon: 'icon-settings',
-    }
+    }*/
 ];

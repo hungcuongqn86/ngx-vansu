@@ -87,10 +87,12 @@
 </ng-template>
 
 <ng-template #templateImport>
+    <div class="modal-header">
+        <h5 class="modal-title">Import Sim</h5>
+    </div>
     <div class="modal-body">
-        <p>File upload</p>
-        <p>{{excelFileName}}</p>
-        <label for="agency">Chọn đại lý</label>
+        <p><strong>File upload: </strong> <a href="#">{{excelFileName}}</a></p>
+        <label for="agency"><strong>Chọn đại lý</strong></label>
         <select [(ngModel)]="agency"
                 id="agency"
                 name="agency"
