@@ -55,7 +55,27 @@
         </div>
     </div>
     <div class="form-group row">
-        <label class="col-md-3 col-form-label" for="price">Giá đại lý (VNĐ) <code class="highlighter-rouge">*</code></label>
+        <label class="col-md-3 col-form-label" for="agency_id">
+            Đại lý <code class="highlighter-rouge">*</code>
+        </label>
+        <div class="col-md-9">
+            <select [(ngModel)]="basesService.sim.agency_id" #agency_id="ngModel" id="agency_id" name="agency_id"
+                    required
+                    class="form-control">
+                <option value="">Chọn đại lý</option>
+                <option *ngFor="let item of agencies" value="{{item.id}}">{{item.name}}</option>
+            </select>
+
+            <div [hidden]="agency_id.valid || agency_id.untouched">
+                                <span *ngIf="agency_id.errors && agency_id.errors.required" class="badge badge-warning">
+                                    Phải chọn Đại lý!
+                                </span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-md-3 col-form-label" for="price">Giá đại lý (VNĐ) <code
+                class="highlighter-rouge">*</code></label>
         <div class="col-md-9">
             <input [(ngModel)]="basesService.sim.price" #price="ngModel" type="text" id="price" name="price"
                    class="form-control"

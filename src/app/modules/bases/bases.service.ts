@@ -57,6 +57,8 @@ export interface Sim {
     price: number;
     sale_price: number;
     telco_id: string;
+    agency_id: string;
+    agency_discount: string;
     is_deleted: number;
     sold_at: string;
     created_at: string;
@@ -89,6 +91,8 @@ export class BasesService {
             , price: null
             , sale_price: null
             , telco_id: ''
+            , agency_id: ''
+            , agency_discount: ''
             , is_deleted: 0
             , sold_at: ''
             , created_at: ''
