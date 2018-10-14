@@ -127,6 +127,15 @@ export class BasesService {
             );
     }
 
+    importSim(filepath, agency) {
+        const url = Util.getUri(apiV1Url) + `sim/import`;
+        const param = {filepath: filepath, agency: agency};
+        return this.http.post<Sim>(url, param)
+            .pipe(
+                catchError(this.handleError('importSim', param))
+            );
+    }
+
     updateBase() {
         if (this.sim.id === null) {
             this.addBase(this.sim).subscribe(

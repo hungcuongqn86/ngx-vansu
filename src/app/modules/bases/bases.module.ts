@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 
 import {BasesService} from './bases.service';
+import {AgencyService} from '../agency/agency.service';
 import {BasesComponent} from './bases.component';
 import {DetailComponent} from './detail.component';
 import {MockupsComponent} from './mockup/mockups.component';
@@ -21,7 +22,7 @@ import {SharedModule} from '../../shared.module';
         InfoComponent
     ],
     exports: [],
-    providers: [BasesService]
+    providers: [BasesService, AgencyService]
 })
 export class BasesModule {
 }

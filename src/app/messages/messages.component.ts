@@ -14,11 +14,25 @@ export class MessagesComponent {
     }
 
     public showLoading(template: TemplateRef<any>) {
-        // console.log(this.loadingService.progress);
-        if (this.loadingService.progress.type === 'progress') {
-            if (!this.modalRef) {
-                this.modalRef = this.modalService.show(template, {class: 'modal-md'});
+        setTimeout(() => {
+            if (this.loadingService.progress.type === 'progress') {
+                if (this.loadingService.progress.progress < 100) {
+                    if (!this.modalRef) {
+                        this.modalRef = this.modalService.show(template, {class: 'modal-md'});
+                    }
+                } else {
+                    this.closeAllModals();
+                }
             }
-        }
+        });
+    }
+
+    private closeAllModals() {
+        setTimeout(() => {
+            for (let i = 1; i <= this.modalService.getModalsCount(); i++) {
+                this.modalService.hide(i);
+            }
+            this.modalRef = null;
+        }, 1500);
     }
 }
