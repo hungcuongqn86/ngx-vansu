@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 
 import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
 import {Util} from '../../helper/lib';
-import {apiUrl, apiV1Url} from '../../const';
+import {apiV1Url} from '../../const';
 import {Router} from '@angular/router';
 
 export interface Agency {
@@ -72,7 +72,7 @@ export class AgencyService {
 
 
     getDiscount(): Observable<any> {
-        const url = Util.getUri(apiUrl) + `sysconfig/agency_discount`;
+        const url = Util.getUri(apiV1Url) + `sim/agency/discount`;
         return this.http.get<any>(url)
             .pipe(
                 catchError(this.handleError('getDiscount', []))
