@@ -99,11 +99,13 @@ export class BasesComponent implements OnInit {
                     if (res.status) {
                         this.excelFileName = res.name;
                         this.excelFilePath = decodeURIComponent(res.data.url);
-                        setTimeout(() => {
-                            this.getAgencies();
-                            this.errorMessage = [];
-                            this.modalRef = this.modalService.show(template, {class: 'modal-md'});
-                        }, 2000);
+                        if (this.modalService.getModalsCount() < 1) {
+                            setTimeout(() => {
+                                this.getAgencies();
+                                this.errorMessage = [];
+                                this.modalRef = this.modalService.show(template, {class: 'modal-md'});
+                            }, 2000);
+                        }
                     }
                     input.value = null;
                 }
