@@ -100,6 +100,10 @@
             <option *ngFor="let item of agencies" value="{{item.id}}">{{item.name}}
             </option>
         </select>
+        <p></p>
+        <alert type="danger" *ngIf="errorMessage.length > 0">
+            <p *ngFor="let error of errorMessage"><strong>Lỗi!</strong> {{error}}</p>
+        </alert>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-primary" (click)="confirmImport()">OK</button>

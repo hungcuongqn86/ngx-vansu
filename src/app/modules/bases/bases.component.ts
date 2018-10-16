@@ -23,6 +23,7 @@ export class BasesComponent implements OnInit {
     agency = 0;
     excelFileName = '';
     excelFilePath = '';
+    errorMessage = [];
 
     constructor(private uploaderService: UploaderService, public basesService: BasesService, public agencyService: AgencyService,
                 private router: Router, private modalService: BsModalService) {
@@ -100,7 +101,8 @@ export class BasesComponent implements OnInit {
                         this.excelFilePath = decodeURIComponent(res.data.url);
                         setTimeout(() => {
                             this.getAgencies();
-                            this.modalRef = this.modalService.show(template, {class: 'modal-sm'});
+                            this.errorMessage = [];
+                            this.modalRef = this.modalService.show(template, {class: 'modal-md'});
                         }, 2000);
                     }
                     input.value = null;
@@ -111,13 +113,18 @@ export class BasesComponent implements OnInit {
 
     public confirmImport() {
         this.importSim();
-        this.modalRef.hide();
     }
 
     public importSim() {
         this.basesService.importSim(this.excelFilePath, this.agency)
             .subscribe(res => {
-                this.searchBases();
+                if (res.status) {
+                    this.modalRef.hide();
+                    this.searchBases();
+                } else {
+                    this.errorMessage = res.data;
+                    // console.log(this.errorMessage);
+                }
             });
     }
 }

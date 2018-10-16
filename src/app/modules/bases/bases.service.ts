@@ -134,7 +134,7 @@ export class BasesService {
     importSim(filepath, agency) {
         const url = Util.getUri(apiV1Url) + `sim/import`;
         const param = {filepath: filepath, agency: agency};
-        return this.http.post<Sim>(url, param)
+        return this.http.post<any>(url, param)
             .pipe(
                 catchError(this.handleError('importSim', param))
             );
