@@ -116,14 +116,16 @@ export class BasesComponent implements OnInit {
     }
 
     public importSim() {
+        this.basesService.showLoading(true);
         this.basesService.importSim(this.excelFilePath, this.agency)
             .subscribe(res => {
                 if (res.status) {
                     this.modalRef.hide();
                     this.searchBases();
+                    this.basesService.showLoading(false);
                 } else {
                     this.errorMessage = res.data;
-                    // console.log(this.errorMessage);
+                    this.basesService.showLoading(false);
                 }
             });
     }

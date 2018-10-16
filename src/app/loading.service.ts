@@ -13,8 +13,15 @@ export interface Res {
 @Injectable()
 export class LoadingService {
     progress: Res;
+    loading = false;
 
     setProgress(progress: Res) {
         this.progress = progress;
+    }
+
+    setLoading(value: boolean) {
+        setTimeout(() => {
+            this.loading = value;
+        });
     }
 }
