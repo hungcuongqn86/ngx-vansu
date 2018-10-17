@@ -12,7 +12,7 @@ export const navItems = [
     {
         name: 'Member',
         url: '/member',
-        icon: 'icon-emotsmile'
+        icon: 'cui-people'
     },
     {
         name: 'Sim',

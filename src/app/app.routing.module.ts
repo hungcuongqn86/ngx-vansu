@@ -26,6 +26,12 @@ const appRoutes: Routes = [
                 data: {
                     title: 'Version'
                 }
+            }, {
+                path: 'member',
+                loadChildren: './modules/member/member.module#MemberModule',
+                data: {
+                    title: 'Member'
+                }
             }
             , {
                 path: 'sim',
