@@ -1,7 +1,6 @@
-import {Component, OnInit, TemplateRef, ViewEncapsulation} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MemberService} from './member.service';
-import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
@@ -16,7 +15,7 @@ export class DetailComponent implements OnInit {
     modalRef: BsModalRef;
     confirmUpdate = false;
 
-    constructor(private router: Router, private route: ActivatedRoute, private modalService: BsModalService
+    constructor(private router: Router, private route: ActivatedRoute
         , public memberService: MemberService) {
         this.route.params.subscribe(params => {
             if (params['id']) {
@@ -29,7 +28,7 @@ export class DetailComponent implements OnInit {
         if (this.memberService.member.id !== null) {
             this.memberService.getMember(this.memberService.member.id)
                 .subscribe(member => {
-                    this.memberService.member = member.data.agency;
+                    this.memberService.member = member.data.member;
                 });
         } else {
             this.memberService.reset();

@@ -12,12 +12,6 @@ const routes: Routes = [
         }
     },
     {
-        path: 'add', component: DetailComponent,
-        data: {
-            title: 'Thêm thành viên mới'
-        }
-    },
-    {
         path: ':id', component: DetailComponent,
         data: {
             title: 'Sửa thành viên'

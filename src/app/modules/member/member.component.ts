@@ -31,16 +31,11 @@ export class MemberComponent implements OnInit {
         this.searchMember();
     }
 
-    public addMember() {
-        this.memberService.member.id = null;
-        this.router.navigate(['/member/add']);
-    }
-
     public editMember(id) {
         this.router.navigate([`/member/${id}`]);
     }
 
-    public deleteBase() {
+    public deleteMember() {
         if (this.member) {
             this.member.is_deleted = 1;
             this.memberService.editMember(this.member)
@@ -64,7 +59,7 @@ export class MemberComponent implements OnInit {
     }
 
     confirm(): void {
-        this.deleteBase();
+        this.deleteMember();
         this.modalRef.hide();
     }
 
