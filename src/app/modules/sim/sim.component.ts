@@ -7,7 +7,7 @@ import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {UploaderService} from '../../uploader.service';
 
 @Component({
-    selector: 'app-bases',
+    selector: 'app-sim',
     templateUrl: './sim.component.html',
     styleUrls: ['./sim.component.css'],
     providers: [UploaderService],
@@ -31,34 +31,34 @@ export class SimComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.searchBases();
+        this.searchSims();
     }
 
     pageChanged(event: any): void {
         this.simService.search.page = event.page;
-        this.searchBases();
+        this.searchSims();
     }
 
-    public addBase() {
+    public addSim() {
         this.simService.sim.id = null;
         this.router.navigate(['/sim/add']);
     }
 
-    public editBase(id) {
+    public editSim(id) {
         this.router.navigate([`/sim/${id}`]);
     }
 
-    public deleteBase() {
+    public deleteSim() {
         if (this.sim) {
             this.sim.is_deleted = 1;
             this.simService.editSim(this.sim)
                 .subscribe(res => {
-                    this.searchBases();
+                    this.searchSims();
                 });
         }
     }
 
-    public searchBases() {
+    public searchSims() {
         this.simService.getSims(this.simService.search)
             .subscribe(sims => {
                 this.Sims = sims.data.data;
@@ -83,7 +83,7 @@ export class SimComponent implements OnInit {
     }
 
     confirm(): void {
-        this.deleteBase();
+        this.deleteSim();
         this.modalRef.hide();
     }
 
@@ -123,7 +123,7 @@ export class SimComponent implements OnInit {
             .subscribe(res => {
                 if (res.status) {
                     this.modalRef.hide();
-                    this.searchBases();
+                    this.searchSims();
                     this.simService.showLoading(false);
                 } else {
                     this.errorMessage = res.data;

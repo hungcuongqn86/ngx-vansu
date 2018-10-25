@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {SimService} from './sim.service';
 
 @Component({
-    selector: 'app-base-detail',
+    selector: 'app-sim-detail',
     templateUrl: './detail.component.html',
     styleUrls: ['./detail.component.css']
 })

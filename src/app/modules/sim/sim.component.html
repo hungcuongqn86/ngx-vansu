@@ -7,7 +7,7 @@
             <input [hidden]="1" type="file" id="fileimport" name="fileimport" #picked
                    (change)="uploadExc(picked, templateImport)">
             <a class="btn" (click)="picked.click()"><i class="fa fa-upload"></i> &nbsp;Import</a>
-            <a class="btn" href="javascript:void(0)" (click)="addBase()"><i class="fa fa-plus"></i> &nbsp;Thêm</a>
+            <a class="btn" href="javascript:void(0)" (click)="addSim()"><i class="fa fa-plus"></i> &nbsp;Thêm</a>
             <a class="btn" href="#"><i class="fa fa-remove"></i> &nbsp;Xóa</a>
         </div>
     </li>
@@ -20,7 +20,7 @@
                     <i class="fa fa-align-justify"></i> <strong>Danh sách sim</strong>
                 </div>
                 <div class="card-body">
-                    <form novalidate (ngSubmit)="searchBases()" #form="ngForm">
+                    <form novalidate (ngSubmit)="searchSims()" #form="ngForm">
                         <div class="form-group row">
                             <div class="col-md-10">
                                 <input [(ngModel)]="simService.search.partten" type="text" id="key" name="key"
@@ -28,7 +28,7 @@
                                        placeholder="Tìm kiếm theo số sim, hoặc theo cấu trúc 097*611">
                             </div>
                             <div class="col-md-2">
-                                <button type="button" (click)="searchBases()"
+                                <button type="button" (click)="searchSims()"
                                         class="btn btn-primary">Tìm kiếm
                                 </button>
                             </div>
@@ -55,7 +55,7 @@
                             <td class="text-right">{{sim.sale_price}}</td>
                             <td class="text-right">{{sim.sold_at}}</td>
                             <td class="text-right">
-                                <button (click)="editBase(sim.id)" class="btn btn-sm btn-ghost-primary" type="button">
+                                <button (click)="editSim(sim.id)" class="btn btn-sm btn-ghost-primary" type="button">
                                     Sửa
                                 </button>
                                 <button (click)="openModal(template,sim)" class="btn btn-sm btn-ghost-danger"
@@ -91,7 +91,8 @@
         <h5 class="modal-title">Import Sim</h5>
     </div>
     <div class="modal-body">
-        <p><strong>File upload: </strong> <a (click)="picked.click()" href="JavaScript:Void(0);">{{excelFileName}}</a></p>
+        <p><strong>File upload: </strong> <a (click)="picked.click()" href="JavaScript:Void(0);">{{excelFileName}}</a>
+        </p>
         <label for="agency"><strong>Chọn đại lý</strong></label>
         <select [(ngModel)]="agency"
                 id="agency"

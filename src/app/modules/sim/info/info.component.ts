@@ -3,7 +3,7 @@ import {SimService, Telco} from '../sim.service';
 import {Agency, AgencyService} from '../../agency/agency.service';
 
 @Component({
-    selector: 'app-base-detail-info',
+    selector: 'app-sim-detail-info',
     templateUrl: './info.component.html',
     styleUrls: ['./info.component.css']
 })
