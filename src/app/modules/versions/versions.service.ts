@@ -8,7 +8,6 @@ import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
 import {Util} from '../../helper/lib';
 import {apiUrl} from '../../const';
 import {Router} from '@angular/router';
-import {Sim} from '../bases/bases.service';
 
 export interface Version {
     id: number;
@@ -91,7 +90,7 @@ export class VersionsService {
 
     public addVersion(version: Version): Observable<any> {
         const url = Util.getUri(apiUrl) + `version/create`;
-        return this.http.post<Sim>(url, version)
+        return this.http.post<Version>(url, version)
             .pipe(
                 catchError(this.handleError('addBase', version))
             );
@@ -99,7 +98,7 @@ export class VersionsService {
 
     public editVersion(version: Version): Observable<any> {
         const url = Util.getUri(apiUrl) + `version/update`;
-        return this.http.put<Sim>(url, version)
+        return this.http.put<Version>(url, version)
             .pipe(
                 catchError(this.handleError('editBase', version))
             );

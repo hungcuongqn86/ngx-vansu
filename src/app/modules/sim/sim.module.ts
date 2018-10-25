@@ -3,26 +3,26 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 
-import {BasesService} from './bases.service';
+import {SimService} from './sim.service';
 import {AgencyService} from '../agency/agency.service';
-import {BasesComponent} from './bases.component';
+import {SimComponent} from './sim.component';
 import {DetailComponent} from './detail.component';
-import {MockupsComponent} from './mockup/mockups.component';
+import {OrdersComponent} from './orders/orders.component';
 import {InfoComponent} from './info/info.component';
 
-import {BasesRoutingModule} from './bases.routing.module';
+import {SimRoutingModule} from './sim.routing.module';
 import {SharedModule} from '../../shared.module';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, BasesRoutingModule, SharedModule, CollapseModule.forRoot()],
+    imports: [CommonModule, FormsModule, SimRoutingModule, SharedModule, CollapseModule.forRoot()],
     declarations: [
-        BasesComponent,
+        SimComponent,
         DetailComponent,
-        MockupsComponent,
+        OrdersComponent,
         InfoComponent
     ],
     exports: [],
-    providers: [BasesService, AgencyService]
+    providers: [SimService, AgencyService]
 })
-export class BasesModule {
+export class SimModule {
 }

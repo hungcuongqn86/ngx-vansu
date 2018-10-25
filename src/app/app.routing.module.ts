@@ -35,7 +35,7 @@ const appRoutes: Routes = [
             }
             , {
                 path: 'sim',
-                loadChildren: './modules/bases/bases.module#BasesModule',
+                loadChildren: './modules/sim/sim.module#SimModule',
                 data: {
                     title: 'Sim'
                 }

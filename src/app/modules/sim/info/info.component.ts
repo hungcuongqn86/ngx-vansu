@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {BasesService, Telco} from '../bases.service';
+import {SimService, Telco} from '../sim.service';
 import {Agency, AgencyService} from '../../agency/agency.service';
 
 @Component({
@@ -12,13 +12,13 @@ export class InfoComponent {
     telco: Telco[];
     agencies: Agency[];
 
-    constructor(public basesService: BasesService, public agencyService: AgencyService) {
+    constructor(public simService: SimService, public agencyService: AgencyService) {
         this.getTelco();
         this.getAgencies();
     }
 
     public getTelco() {
-        this.basesService.getTelco()
+        this.simService.getTelco()
             .subscribe(data => {
                 this.telco = data.data.category;
             });

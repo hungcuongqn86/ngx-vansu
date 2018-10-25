@@ -7,7 +7,7 @@ import {catchError} from 'rxjs/operators';
 import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
 import {Util} from '../../helper/lib';
 import {apiV1Url} from '../../const';
-import {Telco} from '../bases/bases.service';
+import {Telco} from '../sim/sim.service';
 
 export interface Customer {
     id: number;

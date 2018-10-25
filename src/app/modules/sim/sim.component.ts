@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Sim, BasesService} from './bases.service';
+import {Sim, SimService} from './sim.service';
 import {Agency, AgencyService} from '../agency/agency.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -8,13 +8,13 @@ import {UploaderService} from '../../uploader.service';
 
 @Component({
     selector: 'app-bases',
-    templateUrl: './bases.component.html',
-    styleUrls: ['./bases.component.css'],
+    templateUrl: './sim.component.html',
+    styleUrls: ['./sim.component.css'],
     providers: [UploaderService],
     encapsulation: ViewEncapsulation.None
 })
 
-export class BasesComponent implements OnInit {
+export class SimComponent implements OnInit {
     sim: Sim;
     Sims: Sim[];
     agencies: Agency[];
@@ -25,7 +25,7 @@ export class BasesComponent implements OnInit {
     excelFilePath = '';
     errorMessage = [];
 
-    constructor(private uploaderService: UploaderService, public basesService: BasesService, public agencyService: AgencyService,
+    constructor(private uploaderService: UploaderService, public simService: SimService, public agencyService: AgencyService,
                 private router: Router, private modalService: BsModalService) {
 
     }
@@ -35,12 +35,12 @@ export class BasesComponent implements OnInit {
     }
 
     pageChanged(event: any): void {
-        this.basesService.search.page = event.page;
+        this.simService.search.page = event.page;
         this.searchBases();
     }
 
     public addBase() {
-        this.basesService.sim.id = null;
+        this.simService.sim.id = null;
         this.router.navigate(['/sim/add']);
     }
 
@@ -51,7 +51,7 @@ export class BasesComponent implements OnInit {
     public deleteBase() {
         if (this.sim) {
             this.sim.is_deleted = 1;
-            this.basesService.editBase(this.sim)
+            this.simService.editSim(this.sim)
                 .subscribe(res => {
                     this.searchBases();
                 });
@@ -59,10 +59,10 @@ export class BasesComponent implements OnInit {
     }
 
     public searchBases() {
-        this.basesService.getBases(this.basesService.search)
-            .subscribe(bases => {
-                this.Sims = bases.data.data;
-                this.totalItems = bases.data.total;
+        this.simService.getSims(this.simService.search)
+            .subscribe(sims => {
+                this.Sims = sims.data.data;
+                this.totalItems = sims.data.total;
             });
     }
 
@@ -118,16 +118,16 @@ export class BasesComponent implements OnInit {
     }
 
     public importSim() {
-        this.basesService.showLoading(true);
-        this.basesService.importSim(this.excelFilePath, this.agency)
+        this.simService.showLoading(true);
+        this.simService.importSim(this.excelFilePath, this.agency)
             .subscribe(res => {
                 if (res.status) {
                     this.modalRef.hide();
                     this.searchBases();
-                    this.basesService.showLoading(false);
+                    this.simService.showLoading(false);
                 } else {
                     this.errorMessage = res.data;
-                    this.basesService.showLoading(false);
+                    this.simService.showLoading(false);
                 }
             });
     }

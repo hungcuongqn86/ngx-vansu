@@ -4,7 +4,7 @@
             Số sim hiển thị <code class="highlighter-rouge">*</code>
         </label>
         <div class="col-md-9">
-            <input [(ngModel)]="basesService.sim.sim_number" #sim_number="ngModel" type="text" id="sim_number"
+            <input [(ngModel)]="simService.sim.sim_number" #sim_number="ngModel" type="text" id="sim_number"
                    name="sim_number"
                    required
                    class="form-control"
@@ -22,7 +22,7 @@
             Số sim <code class="highlighter-rouge">*</code>
         </label>
         <div class="col-md-9">
-            <input [(ngModel)]="basesService.sim.sim_number_standard" #sim_number_standard="ngModel" type="text"
+            <input [(ngModel)]="simService.sim.sim_number_standard" #sim_number_standard="ngModel" type="text"
                    id="sim_number_standard" name="sim_number_standard"
                    required
                    class="form-control"
@@ -40,7 +40,7 @@
             Telco <code class="highlighter-rouge">*</code>
         </label>
         <div class="col-md-9">
-            <select [(ngModel)]="basesService.sim.telco_id" #telco_id="ngModel" id="telco_id" name="telco_id"
+            <select [(ngModel)]="simService.sim.telco_id" #telco_id="ngModel" id="telco_id" name="telco_id"
                     required
                     class="form-control">
                 <option value="">Chọn telco</option>
@@ -59,7 +59,7 @@
             Đại lý <code class="highlighter-rouge">*</code>
         </label>
         <div class="col-md-9">
-            <select [(ngModel)]="basesService.sim.agency_id" #agency_id="ngModel" id="agency_id" name="agency_id"
+            <select [(ngModel)]="simService.sim.agency_id" #agency_id="ngModel" id="agency_id" name="agency_id"
                     required
                     class="form-control">
                 <option value="">Chọn đại lý</option>
@@ -77,7 +77,7 @@
         <label class="col-md-3 col-form-label" for="price">Giá đại lý (VNĐ) <code
                 class="highlighter-rouge">*</code></label>
         <div class="col-md-9">
-            <input [(ngModel)]="basesService.sim.price" #price="ngModel" type="text" id="price" name="price"
+            <input [(ngModel)]="simService.sim.price" #price="ngModel" type="text" id="price" name="price"
                    class="form-control"
                    required
                    placeholder="Giá (VNĐ)">
@@ -91,7 +91,7 @@
     <div class="form-group row">
         <label class="col-md-3 col-form-label" for="sold_at">Ngày bán</label>
         <div class="col-md-9">
-            <input [(ngModel)]="basesService.sim.sold_at" type="text" id="sold_at"
+            <input [(ngModel)]="simService.sim.sold_at" type="text" id="sold_at"
                    name="sold_at"
                    [disabled]="true"
                    class="form-control"

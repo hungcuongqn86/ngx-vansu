@@ -71,19 +71,19 @@ export interface Sim {
 }
 
 @Injectable()
-export class BasesService {
-    static instance: BasesService;
+export class SimService {
+    static instance: SimService;
     private handleError: HandleError;
     public search = {partten: '', start_price: 0, end_price: null, page_size: 10, page: 1};
     public sim: Sim;
 
     constructor(private router: Router, private http: HttpClient, httpErrorHandler: HttpErrorHandler,
                 private loadingService: LoadingService) {
-        this.handleError = httpErrorHandler.createHandleError('BasesService');
+        this.handleError = httpErrorHandler.createHandleError('SimService');
         if (!this.sim) {
             this.reset();
         }
-        return BasesService.instance = BasesService.instance || this;
+        return SimService.instance = SimService.instance || this;
     }
 
     showLoading(value: boolean) {
@@ -110,7 +110,7 @@ export class BasesService {
         };
     }
 
-    getBases(search): Observable<any> {
+    getSims(search): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/search`;
         let params = new HttpParams();
         Object.keys(search).map((key) => {
@@ -118,15 +118,15 @@ export class BasesService {
         });
         return this.http.get<any>(url, {params: params})
             .pipe(
-                catchError(this.handleError('getBases', []))
+                catchError(this.handleError('getSims', []))
             );
     }
 
-    getBase(id): Observable<any> {
+    getSim(id): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/detail/${id}`;
         return this.http.get<any>(url)
             .pipe(
-                catchError(this.handleError('getBase', []))
+                catchError(this.handleError('getSim', []))
             );
     }
 
@@ -147,15 +147,15 @@ export class BasesService {
             );
     }
 
-    updateBase() {
+    updateSim() {
         if (this.sim.id === null) {
-            this.addBase(this.sim).subscribe(
+            this.addSim(this.sim).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
             );
         } else {
-            this.editBase(this.sim).subscribe(
+            this.editSim(this.sim).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
@@ -169,19 +169,19 @@ export class BasesService {
         }
     }
 
-    public addBase(sim: Sim): Observable<any> {
+    public addSim(sim: Sim): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/create`;
         return this.http.post<Sim>(url, sim)
             .pipe(
-                catchError(this.handleError('addBase', sim))
+                catchError(this.handleError('addSim', sim))
             );
     }
 
-    public editBase(sim: Sim): Observable<any> {
+    public editSim(sim: Sim): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/update`;
         return this.http.put<Sim>(url, sim)
             .pipe(
-                catchError(this.handleError('editBase', sim))
+                catchError(this.handleError('editSim', sim))
             );
     }
 }

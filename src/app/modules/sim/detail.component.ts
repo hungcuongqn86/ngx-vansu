@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BasesService} from './bases.service';
+import {SimService} from './sim.service';
 
 @Component({
     selector: 'app-base-detail',
@@ -10,22 +10,22 @@ import {BasesService} from './bases.service';
 
 export class DetailComponent implements OnInit {
     constructor(private router: Router, private route: ActivatedRoute
-        , public basesService: BasesService) {
+        , public simService: SimService) {
         this.route.params.subscribe(params => {
             if (params['id']) {
-                this.basesService.sim.id = params['id'];
+                this.simService.sim.id = params['id'];
             }
         });
     }
 
     ngOnInit() {
-        if (this.basesService.sim.id !== null) {
-            this.basesService.getBase(this.basesService.sim.id)
+        if (this.simService.sim.id !== null) {
+            this.simService.getSim(this.simService.sim.id)
                 .subscribe(sim => {
-                    this.basesService.sim = sim.data.sim;
+                    this.simService.sim = sim.data.sim;
                 });
         } else {
-            this.basesService.reset();
+            this.simService.reset();
         }
     }
 

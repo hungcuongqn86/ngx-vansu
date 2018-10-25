@@ -23,7 +23,7 @@
                     <form novalidate (ngSubmit)="searchBases()" #form="ngForm">
                         <div class="form-group row">
                             <div class="col-md-10">
-                                <input [(ngModel)]="basesService.search.partten" type="text" id="key" name="key"
+                                <input [(ngModel)]="simService.search.partten" type="text" id="key" name="key"
                                        class="form-control"
                                        placeholder="Tìm kiếm theo số sim, hoặc theo cấu trúc 097*611">
                             </div>
@@ -65,7 +65,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="basesService.search.page"
+                    <pagination [boundaryLinks]="true" [totalItems]="totalItems" [(ngModel)]="simService.search.page"
                                 (pageChanged)="pageChanged($event)"
                                 class="pagination-sm pull-right" [maxSize]="6"
                                 previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"

@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {BasesComponent} from './bases.component';
+import {SimComponent} from './sim.component';
 import {DetailComponent} from './detail.component';
 
 const routes: Routes = [
     {
-        path: '', component: BasesComponent,
+        path: '', component: SimComponent,
         data: {
             title: 'Sim'
         }
@@ -31,7 +31,7 @@ const routes: Routes = [
     exports: [RouterModule]
 })
 
-export class BasesRoutingModule {
+export class SimRoutingModule {
     constructor() {
     }
 }
