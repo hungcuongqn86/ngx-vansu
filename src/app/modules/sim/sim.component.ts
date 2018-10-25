@@ -41,11 +41,11 @@ export class SimComponent implements OnInit {
 
     public addSim() {
         this.simService.sim.id = null;
-        this.router.navigate(['/sim/add']);
+        this.router.navigate(['/msim/sim/add']);
     }
 
     public editSim(id) {
-        this.router.navigate([`/sim/${id}`]);
+        this.router.navigate([`/msim/sim/${id}`]);
     }
 
     public deleteSim() {

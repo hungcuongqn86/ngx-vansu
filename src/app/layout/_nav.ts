@@ -15,19 +15,31 @@ export const navItems = [
         icon: 'cui-people'
     },
     {
-        name: 'Sim',
-        url: '/sim',
+        name: 'Sim management',
+        url: '/msim',
         icon: 'icon-puzzle',
+        children: [
+            {
+                name: 'Sim',
+                url: '/msim/sim',
+                icon: 'icon-puzzle'
+            },
+            {
+                name: 'Agency',
+                url: '/msim/agency',
+                icon: 'cui-graph'
+            },
+            {
+                name: 'Orders',
+                url: '/msim/orders',
+                icon: 'cui-basket-loaded'
+            },
+        ]
     },
     {
-        name: 'Agency',
-        url: '/agency',
-        icon: 'cui-graph'
-    },
-    {
-        name: 'Orders',
-        url: '/orders',
-        icon: 'cui-basket-loaded'
+        name: 'Partner',
+        url: '/partner',
+        icon: 'fa fa-address-book-o'
     },
     /*{
         name: 'Customers',

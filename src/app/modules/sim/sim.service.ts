@@ -165,7 +165,7 @@ export class SimService {
 
     private updateSuccess(res: any) {
         if (res.status) {
-            this.router.navigate(['/sim']);
+            this.router.navigate(['/msim/sim']);
         }
     }
 

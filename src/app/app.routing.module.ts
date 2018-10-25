@@ -34,21 +34,21 @@ const appRoutes: Routes = [
                 }
             }
             , {
-                path: 'sim',
+                path: 'msim/sim',
                 loadChildren: './modules/sim/sim.module#SimModule',
                 data: {
                     title: 'Sim'
                 }
             }
             , {
-                path: 'agency',
+                path: 'msim/agency',
                 loadChildren: './modules/agency/agency.module#AgencyModule',
                 data: {
                     title: 'Đại lý'
                 }
             }
             , {
-                path: 'orders',
+                path: 'msim/orders',
                 loadChildren: './modules/orders/orders.module#OrdersModule',
                 data: {
                     title: 'Đơn hàng'
