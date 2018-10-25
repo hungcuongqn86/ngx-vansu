@@ -29,7 +29,7 @@ export class OrdersComponent implements OnInit {
     }
 
     public editBase(id) {
-        this.router.navigate([`/orders/${id}`]);
+        this.router.navigate([`/msim/orders/${id}`]);
     }
 
     public searchOrders() {

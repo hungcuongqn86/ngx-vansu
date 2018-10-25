@@ -33,11 +33,11 @@ export class AgencyComponent implements OnInit {
 
     public addBase() {
         this.agencyService.agency.id = null;
-        this.router.navigate(['/agency/add']);
+        this.router.navigate(['/msim/agency/add']);
     }
 
     public editBase(id) {
-        this.router.navigate([`/agency/${id}`]);
+        this.router.navigate([`/msim/agency/${id}`]);
     }
 
     public deleteBase() {

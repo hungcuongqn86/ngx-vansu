@@ -97,7 +97,7 @@ export class AgencyService {
 
     private updateSuccess(res: any) {
         if (res.status) {
-            this.router.navigate(['/agency']);
+            this.router.navigate(['/msim/agency']);
         }
     }
 

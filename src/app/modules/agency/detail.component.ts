@@ -71,6 +71,6 @@ export class DetailComponent implements OnInit {
     }
 
     public backlist() {
-        this.router.navigate(['/agency']);
+        this.router.navigate(['/msim/agency']);
     }
 }
