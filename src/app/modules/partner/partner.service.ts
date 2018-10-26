@@ -55,7 +55,7 @@ export class PartnerService {
     }
 
     getPartners(search): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/agency/search`;
+        const url = Util.getUri(apiV1Url) + `partner/search`;
         let params = new HttpParams();
         Object.keys(search).map((key) => {
             params = params.append(key, search[key]);
@@ -92,7 +92,7 @@ export class PartnerService {
 
     private updateSuccess(res: any) {
         if (res.status) {
-            this.router.navigate(['/msim/agency']);
+            this.router.navigate(['/partner']);
         }
     }
 

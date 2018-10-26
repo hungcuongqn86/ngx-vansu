@@ -8,19 +8,19 @@ const routes: Routes = [
     {
         path: '', component: PartnerComponent,
         data: {
-            title: 'Đại lý'
+            title: 'Đối tác'
         }
     },
     {
         path: 'add', component: DetailComponent,
         data: {
-            title: 'Thêm đại lý mới'
+            title: 'Thêm đối tác mới'
         }
     },
     {
         path: ':id', component: DetailComponent,
         data: {
-            title: 'Sửa đại lý'
+            title: 'Sửa đối tác'
         }
     }
 ];

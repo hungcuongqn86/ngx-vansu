@@ -33,11 +33,11 @@ export class PartnerComponent implements OnInit {
 
     public addPartner() {
         this.partnerService.partner.id = null;
-        this.router.navigate(['/msim/agency/add']);
+        this.router.navigate(['/partner/add']);
     }
 
     public editPartner(id) {
-        this.router.navigate([`/msim/agency/${id}`]);
+        this.router.navigate([`/partner/${id}`]);
     }
 
     public deletePartner() {
