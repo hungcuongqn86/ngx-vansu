@@ -5,6 +5,7 @@ import {Error404Component} from './messages/error404.component';
 import {LoginComponent} from './auth/login.component';
 import {DefaultLayoutComponent} from './layout';
 import {VersionsModule} from './modules/versions/versions.module';
+import {PartnerModule} from './modules/partner/partner.module';
 
 const appRoutes: Routes = [
     {
@@ -52,6 +53,13 @@ const appRoutes: Routes = [
                 loadChildren: './modules/orders/orders.module#OrdersModule',
                 data: {
                     title: 'Đơn hàng'
+                }
+            }
+            , {
+                path: 'partner',
+                loadChildren: './modules/partner/partner.module#PartnerModule',
+                data: {
+                    title: 'Đối tác'
                 }
             }
             , {

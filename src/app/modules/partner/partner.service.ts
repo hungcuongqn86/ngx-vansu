@@ -9,48 +9,52 @@ import {Util} from '../../helper/lib';
 import {apiV1Url} from '../../const';
 import {Router} from '@angular/router';
 
-export interface Agency {
+export interface Option {
+    payment_syntax: string;
+    trial_period: string;
+    paid_period: string;
+}
+
+export interface Partner {
     id: number;
-    code: string;
-    name: string;
-    discount: string;
-    status: number;
+    email: string;
+    token: string;
+    options: string;
+    arr_options: Option;
     is_deleted: number;
     created_at: string;
     updated_at: string;
-    changeDiscount: number;
 }
 
 @Injectable()
-export class AgencyService {
-    static instance: AgencyService;
+export class PartnerService {
+    static instance: PartnerService;
     private handleError: HandleError;
     public search = {key: '', page_size: 10, page: 1};
-    public agency: Agency;
+    public partner: Partner;
 
     constructor(private router: Router, private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
-        this.handleError = httpErrorHandler.createHandleError('AgencyService');
-        if (!this.agency) {
+        this.handleError = httpErrorHandler.createHandleError('PartnerService');
+        if (!this.partner) {
             this.reset();
         }
-        return AgencyService.instance = AgencyService.instance || this;
+        return PartnerService.instance = PartnerService.instance || this;
     }
 
     reset() {
-        this.agency = {
+        this.partner = {
             id: null
-            , code: null
-            , name: null
-            , discount: null
-            , status: 1
+            , email: null
+            , token: null
+            , options: null
+            , arr_options: null
             , is_deleted: 0
             , created_at: ''
             , updated_at: ''
-            , changeDiscount: 0
         };
     }
 
-    getAgencies(search): Observable<any> {
+    getPartners(search): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/agency/search`;
         let params = new HttpParams();
         Object.keys(search).map((key) => {
@@ -58,36 +62,27 @@ export class AgencyService {
         });
         return this.http.get<any>(url, {params: params})
             .pipe(
-                catchError(this.handleError('getAgencies', []))
+                catchError(this.handleError('getPartners', []))
             );
     }
 
-    getAgency(id): Observable<any> {
+    getPartner(id): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/agency/detail/${id}`;
         return this.http.get<any>(url)
             .pipe(
-                catchError(this.handleError('getAgency', []))
+                catchError(this.handleError('getPartner', []))
             );
     }
 
-
-    getDiscount(): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/agency/discount`;
-        return this.http.get<any>(url)
-            .pipe(
-                catchError(this.handleError('getDiscount', []))
-            );
-    }
-
-    updateAgency() {
-        if (this.agency.id === null) {
-            this.addAgency(this.agency).subscribe(
+    updatePartner() {
+        if (this.partner.id === null) {
+            this.addPartner(this.partner).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
             );
         } else {
-            this.editAgency(this.agency).subscribe(
+            this.editPartner(this.partner).subscribe(
                 res => {
                     this.updateSuccess(res);
                 }
@@ -101,19 +96,19 @@ export class AgencyService {
         }
     }
 
-    public addAgency(agency: Agency): Observable<any> {
+    public addPartner(partner: Partner): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/agency/create`;
-        return this.http.post<Agency>(url, agency)
+        return this.http.post<Partner>(url, partner)
             .pipe(
-                catchError(this.handleError('addAgency', agency))
+                catchError(this.handleError('addPartner', partner))
             );
     }
 
-    public editAgency(agency: Agency): Observable<any> {
+    public editPartner(partner: Partner): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/agency/update`;
-        return this.http.put<Agency>(url, agency)
+        return this.http.put<Partner>(url, partner)
             .pipe(
-                catchError(this.handleError('editAgency', agency))
+                catchError(this.handleError('editPartner', partner))
             );
     }
 }
