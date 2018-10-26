@@ -51,6 +51,51 @@
                                     </label>
                                 </div>
                             </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="payment_syntax">
+                                    Cấu trúc thanh toán
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="partnerService.partner.arr_options.payment_syntax"
+                                           #payment_syntax="ngModel"
+                                           type="text"
+                                           id="payment_syntax"
+                                           name="payment_syntax"
+                                           required
+                                           class="form-control"
+                                           placeholder="Cấu trúc thanh toán">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="trial_period">
+                                    Thời gian dùng thử
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="partnerService.partner.arr_options.trial_period"
+                                           #trial_period="ngModel"
+                                           type="text"
+                                           id="trial_period"
+                                           name="trial_period"
+                                           required
+                                           class="form-control"
+                                           placeholder="Thời gian dùng thử">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="paid_period">
+                                    Thời gian gia hạn
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="partnerService.partner.arr_options.paid_period"
+                                           #paid_period="ngModel"
+                                           type="text"
+                                           id="paid_period"
+                                           name="paid_period"
+                                           required
+                                           class="form-control"
+                                           placeholder="Thời gian gia hạn">
+                                </div>
+                            </div>
                         </form>
                     </div><!--/.col-->
                 </div>
