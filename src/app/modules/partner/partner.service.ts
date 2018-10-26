@@ -67,7 +67,7 @@ export class PartnerService {
     }
 
     getPartner(id): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/agency/detail/${id}`;
+        const url = Util.getUri(apiV1Url) + `partner/detail/${id}`;
         return this.http.get<any>(url)
             .pipe(
                 catchError(this.handleError('getPartner', []))
@@ -97,7 +97,7 @@ export class PartnerService {
     }
 
     public addPartner(partner: Partner): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/agency/create`;
+        const url = Util.getUri(apiV1Url) + `partner/create`;
         return this.http.post<Partner>(url, partner)
             .pipe(
                 catchError(this.handleError('addPartner', partner))
@@ -105,7 +105,7 @@ export class PartnerService {
     }
 
     public editPartner(partner: Partner): Observable<any> {
-        const url = Util.getUri(apiV1Url) + `sim/agency/update`;
+        const url = Util.getUri(apiV1Url) + `partner/update`;
         return this.http.put<Partner>(url, partner)
             .pipe(
                 catchError(this.handleError('editPartner', partner))

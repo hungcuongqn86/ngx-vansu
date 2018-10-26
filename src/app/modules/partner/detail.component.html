@@ -4,7 +4,7 @@
     <!-- Breadcrumb Menu-->
     <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-            <a class="btn" href="javascript:void(0)" (click)="updateAgency(template)"><i
+            <a class="btn" href="javascript:void(0)" (click)="partnerService.updatePartner()"><i
                     class="fa fa-check-square"></i> &nbsp;Cập nhật</a>
             <a class="btn" href="javascript:void(0)" (click)="backlist()"
                target="_blank"><i class="fa fa-arrow-left"></i> &nbsp;Quay lại</a>
@@ -17,12 +17,40 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <strong>Chi tiết đại lý</strong>
+                    <strong>Chi tiết đối tác</strong>
                 </div>
                 <div class="card-body">
                     <div class="col-md-12 mb-4">
                         <form novalidate #form="ngForm" class="form-horizontal">
-
+                            <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="email">
+                                    Email <code class="highlighter-rouge">*</code>
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="partnerService.partner.email" #email="ngModel" type="text"
+                                           id="email"
+                                           name="email"
+                                           required
+                                           class="form-control"
+                                           placeholder="Email">
+                                    <div [hidden]="email.valid || email.untouched">
+                                <span *ngIf="email.errors && email.errors.required"
+                                      class="badge badge-warning">
+                                    Phải nhập Email!
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="partnerService.partner.id!=null" class="form-group row">
+                                <label class="col-md-3 col-form-label" for="email">
+                                    Token
+                                </label>
+                                <div class="col-md-9">
+                                    <label class="col-md-12 col-form-label" for="email">
+                                        {{partnerService.partner.token}}
+                                    </label>
+                                </div>
+                            </div>
                         </form>
                     </div><!--/.col-->
                 </div>
