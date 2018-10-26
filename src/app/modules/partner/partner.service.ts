@@ -47,7 +47,11 @@ export class PartnerService {
             , email: null
             , token: null
             , options: null
-            , arr_options: null
+            , arr_options: {
+                payment_syntax: '',
+                trial_period: '15',
+                paid_period: '30'
+            }
             , is_deleted: 0
             , created_at: ''
             , updated_at: ''
@@ -75,6 +79,7 @@ export class PartnerService {
     }
 
     updatePartner() {
+        this.partner.options = JSON.stringify(this.partner.arr_options);
         if (this.partner.id === null) {
             this.addPartner(this.partner).subscribe(
                 res => {

@@ -51,7 +51,7 @@
                                     </label>
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div *ngIf="partnerService.partner.arr_options!=null" class="form-group row">
                                 <label class="col-md-3 col-form-label" for="payment_syntax">
                                     Cấu trúc thanh toán
                                 </label>
@@ -66,7 +66,7 @@
                                            placeholder="Cấu trúc thanh toán">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div *ngIf="partnerService.partner.arr_options!=null" class="form-group row">
                                 <label class="col-md-3 col-form-label" for="trial_period">
                                     Thời gian dùng thử
                                 </label>
@@ -81,7 +81,7 @@
                                            placeholder="Thời gian dùng thử">
                                 </div>
                             </div>
-                            <div class="form-group row">
+                            <div *ngIf="partnerService.partner.arr_options!=null" class="form-group row">
                                 <label class="col-md-3 col-form-label" for="paid_period">
                                     Thời gian gia hạn
                                 </label>
