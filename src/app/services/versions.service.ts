@@ -8,17 +8,7 @@ import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
 import {Util} from '../helper/lib';
 import {apiUrl} from '../const';
 import {Router} from '@angular/router';
-
-export interface Version {
-    id: number;
-    partner: string;
-    app_code: string;
-    version_code: string;
-    link_apk: string;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-}
+import {Version} from '../models/Version';
 
 @Injectable()
 export class VersionsService {
