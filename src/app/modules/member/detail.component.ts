@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MemberService} from './member.service';
+import {MemberService} from '../../services/member.service';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({

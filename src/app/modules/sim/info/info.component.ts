@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
-import {SimService, Telco} from '../sim.service';
-import {Agency, AgencyService} from '../../agency/agency.service';
+import {SimService, Telco} from '../../../services/sim.service';
+import {Agency, AgencyService} from '../../../services/agency.service';
 
 @Component({
     selector: 'app-sim-detail-info',

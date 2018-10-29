@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {PartnerService} from './partner.service';
+import {PartnerService} from '../../services/partner.service';
 
 @Component({
     selector: 'app-base-detail',

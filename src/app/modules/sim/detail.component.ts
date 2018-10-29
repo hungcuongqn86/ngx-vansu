@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SimService} from './sim.service';
+import {SimService} from '../../services/sim.service';
 
 @Component({
     selector: 'app-sim-detail',

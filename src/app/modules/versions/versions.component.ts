@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Version, VersionsService} from './versions.service';
+import {Version, VersionsService} from '../../services/versions.service';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 

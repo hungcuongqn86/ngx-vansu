@@ -4,9 +4,9 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
-import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
-import {Util} from '../../helper/lib';
-import {apiUrl} from '../../const';
+import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
+import {Util} from '../helper/lib';
+import {apiUrl} from '../const';
 import {Router} from '@angular/router';
 
 export interface Version {

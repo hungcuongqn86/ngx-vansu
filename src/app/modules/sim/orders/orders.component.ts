@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {SimService} from '../sim.service';
+import {SimService} from '../../../services/sim.service';
 
 @Component({
     selector: 'app-sim-detail-orders',

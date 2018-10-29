@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
-import {OrdersService} from './orders.service';
+import {OrdersService} from '../../services/orders.service';
 import {OrdersComponent} from './orders.component';
 import {DetailComponent} from './detail.component';
 

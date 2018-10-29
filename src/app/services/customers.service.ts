@@ -4,8 +4,8 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
-import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
-import {apiV1Url} from '../../const';
+import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
+import {apiV1Url} from '../const';
 
 export interface Customer {
     id: number;

@@ -4,11 +4,11 @@ import {HttpClient, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {catchError} from 'rxjs/operators';
 
-import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
-import {Util} from '../../helper/lib';
-import {apiV1Url} from '../../const';
+import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
+import {Util} from '../helper/lib';
+import {apiV1Url} from '../const';
 import {Router} from '@angular/router';
-import {Partner} from '../../models/Partner';
+import {Partner} from '../models/Partner';
 
 @Injectable()
 export class PartnerService {

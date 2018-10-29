@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {Customer, CustomersService} from './customers.service';
+import {Customer, CustomersService} from '../../services/customers.service';
 import {backendUrl} from '../../const';
 
 @Component({

@@ -3,8 +3,8 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {CollapseModule} from 'ngx-bootstrap/collapse';
 
-import {SimService} from './sim.service';
-import {AgencyService} from '../agency/agency.service';
+import {SimService} from '../../services/sim.service';
+import {AgencyService} from '../../services/agency.service';
 import {SimComponent} from './sim.component';
 import {DetailComponent} from './detail.component';
 import {OrdersComponent} from './orders/orders.component';

@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {VersionsService} from './versions.service';
+import {VersionsService} from '../../services/versions.service';
+import {Partner} from '../../models/Partner';
 
 @Component({
     selector: 'app-base-detail',
@@ -9,6 +10,7 @@ import {VersionsService} from './versions.service';
 })
 
 export class DetailComponent implements OnInit {
+    public partner: Partner;
     public applist = [
         {code: 'vs', name: 'Lịch vạn sự'},
         {code: 'spt', name: 'Sim phong thủy'},
