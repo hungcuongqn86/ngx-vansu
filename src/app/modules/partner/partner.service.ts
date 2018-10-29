@@ -8,23 +8,7 @@ import {HttpErrorHandler, HandleError} from '../../http-error-handler.service';
 import {Util} from '../../helper/lib';
 import {apiV1Url} from '../../const';
 import {Router} from '@angular/router';
-
-export interface Option {
-    payment_syntax: string;
-    trial_period: string;
-    paid_period: string;
-}
-
-export interface Partner {
-    id: number;
-    email: string;
-    token: string;
-    options: string;
-    arr_options: Option;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-}
+import {Partner} from '../../models/Partner';
 
 @Injectable()
 export class PartnerService {
