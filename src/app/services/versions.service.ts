@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 
 export interface Version {
     id: number;
+    partner: string;
     app_code: string;
     version_code: string;
     link_apk: string;
@@ -38,6 +39,7 @@ export class VersionsService {
         this.version = {
             id: null
             , app_code: ''
+            , partner: ''
             , version_code: null
             , link_apk: null
             , is_deleted: 0

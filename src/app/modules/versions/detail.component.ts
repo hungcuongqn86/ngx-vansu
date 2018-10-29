@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {VersionsService} from '../../services/versions.service';
+import {PartnerService} from '../../services/partner.service';
 import {Partner} from '../../models/Partner';
 
 @Component({
@@ -10,14 +11,14 @@ import {Partner} from '../../models/Partner';
 })
 
 export class DetailComponent implements OnInit {
-    public partner: Partner;
+    public partners: Partner[];
     public applist = [
         {code: 'vs', name: 'Lịch vạn sự'},
         {code: 'spt', name: 'Sim phong thủy'},
     ];
 
     constructor(private router: Router, private route: ActivatedRoute
-        , public versionsService: VersionsService) {
+        , public versionsService: VersionsService, public partnerService: PartnerService) {
         this.route.params.subscribe(params => {
             if (params['id']) {
                 this.versionsService.version.id = params['id'];
@@ -34,6 +35,15 @@ export class DetailComponent implements OnInit {
         } else {
             this.versionsService.reset();
         }
+        this.getPartner();
+    }
+
+    public getPartner() {
+        const filter = {key: '', page_size: 1000, page: 1};
+        this.partnerService.getPartners(filter)
+            .subscribe(partners => {
+                this.partners = partners.data.data;
+            });
     }
 
     public backlist() {

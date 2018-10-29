@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 import {VersionsService} from '../../services/versions.service';
+import {PartnerService} from '../../services/partner.service';
 import {VersionsComponent} from './versions.component';
 import {DetailComponent} from './detail.component';
 
@@ -16,7 +17,7 @@ import {SharedModule} from '../../shared.module';
         DetailComponent
     ],
     exports: [],
-    providers: [VersionsService]
+    providers: [VersionsService, PartnerService]
 })
 export class VersionsModule {
 }
