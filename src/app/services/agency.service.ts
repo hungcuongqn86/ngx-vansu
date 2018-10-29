@@ -8,18 +8,7 @@ import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
 import {Util} from '../helper/lib';
 import {apiV1Url} from '../const';
 import {Router} from '@angular/router';
-
-export interface Agency {
-    id: number;
-    code: string;
-    name: string;
-    discount: string;
-    status: number;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-    changeDiscount: number;
-}
+import {Agency} from '../models/Agency';
 
 @Injectable()
 export class AgencyService {

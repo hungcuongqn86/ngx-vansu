@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Agency, AgencyService} from '../../services/agency.service';
+import {AgencyService} from '../../services/agency.service';
+import {Agency} from '../../models/Agency';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
@@ -17,7 +18,7 @@ export class AgencyComponent implements OnInit {
     totalItems = 0;
     modalRef: BsModalRef;
 
-    constructor( public agencyService: AgencyService,
+    constructor(public agencyService: AgencyService,
                 private router: Router, private modalService: BsModalService) {
 
     }

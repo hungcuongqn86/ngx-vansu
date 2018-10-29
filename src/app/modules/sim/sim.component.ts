@@ -1,7 +1,8 @@
 import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
 import {Sim, SimService} from '../../services/sim.service';
-import {Agency, AgencyService} from '../../services/agency.service';
+import {AgencyService} from '../../services/agency.service';
+import {Agency} from '../../models/Agency';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {UploaderService} from '../../uploader.service';
