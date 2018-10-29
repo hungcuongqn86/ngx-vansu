@@ -8,22 +8,7 @@ import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
 import {Util} from '../helper/lib';
 import {apiV1Url} from '../const';
 import {Router} from '@angular/router';
-
-export interface Member {
-    id: number;
-    device_id: string;
-    phone_number: string;
-    birth_day: string;
-    birth_time: string;
-    status: string;
-    type: string;
-    active_at: string;
-    expired_on: string;
-    token: string;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-}
+import {Member} from '../models/Member';
 
 @Injectable()
 export class MemberService {
