@@ -7,52 +7,7 @@ import {catchError} from 'rxjs/operators';
 import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
 import {Util} from '../helper/lib';
 import {apiV1Url} from '../const';
-import {Telco} from './sim.service';
-
-export interface Customer {
-    id: number;
-    customer_name: string;
-    customer_tel: string;
-    customer_addr: string;
-    customer_dob: string;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface Order {
-    id: number;
-    sim_id: number;
-    customer_id: number;
-    order_number: string;
-    order_status: number;
-    created_at: string;
-    order_status_name: string;
-    updated_at: string;
-    customer: Customer;
-    sim: Sim;
-}
-
-export interface Telco {
-    id: number;
-    telco_name: string;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface Sim {
-    id: number;
-    sim_number: string;
-    sim_number_standard: string;
-    price: number;
-    telco_id: number;
-    is_deleted: number;
-    sold_at: string;
-    created_at: string;
-    updated_at: string;
-    order: Array<Order>;
-    category: Telco;
-}
+import {Order} from '../models/Order';
 
 @Injectable()
 export class OrdersService {
@@ -123,7 +78,7 @@ export class OrdersService {
 
     public updateOrderStatus(): Observable<any> {
         const url = Util.getUri(apiV1Url) + `sim/order/update`;
-        return this.http.put<Sim>(url, this.order)
+        return this.http.put<Order>(url, this.order)
             .pipe(
                 catchError(this.handleError('updateOrderStatus', this.order))
             );

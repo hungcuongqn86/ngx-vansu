@@ -10,65 +10,7 @@ import {apiV1Url} from '../const';
 import {LoadingService} from '../loading.service';
 
 import {Router} from '@angular/router';
-
-export interface Customer {
-    id: number;
-    customer_name: string;
-    customer_tel: string;
-    customer_addr: string;
-    customer_dob: string;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface Order {
-    id: number;
-    sim_id: number;
-    customer_id: number;
-    order_number: string;
-    order_status: number;
-    order_status_name: string;
-    created_at: string;
-    updated_at: string;
-    customer: Customer;
-}
-
-export interface Telco {
-    id: number;
-    telco_name: string;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface Agency {
-    id: number;
-    code: string;
-    name: string;
-    discount: string;
-    status: number;
-    is_deleted: number;
-    created_at: string;
-    updated_at: string;
-}
-
-export interface Sim {
-    id: number;
-    sim_number: string;
-    sim_number_standard: string;
-    price: number;
-    sale_price: number;
-    telco_id: string;
-    agency_id: string;
-    agency_discount: string;
-    is_deleted: number;
-    sold_at: string;
-    created_at: string;
-    updated_at: string;
-    order: Array<Order>;
-    category: Telco;
-    agency: Agency;
-}
+import {Sim} from '../models/Sim';
 
 @Injectable()
 export class SimService {
