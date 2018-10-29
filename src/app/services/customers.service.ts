@@ -6,17 +6,7 @@ import {catchError} from 'rxjs/operators';
 
 import {HttpErrorHandler, HandleError} from '../http-error-handler.service';
 import {apiV1Url} from '../const';
-
-export interface Customer {
-    id: number;
-    code: string;
-    name: string;
-    phone: string;
-    email: string;
-    address: string;
-    note: string;
-    delete_f: number;
-}
+import {Customer} from '../models/Customer';
 
 @Injectable()
 export class CustomersService {
