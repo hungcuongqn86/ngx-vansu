@@ -6,6 +6,7 @@ interface Option {
 
 export interface Partner {
     id: number;
+    code: string;
     email: string;
     token: string;
     options: string;

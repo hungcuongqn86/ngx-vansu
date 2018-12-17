@@ -41,7 +41,7 @@ export class CustomersComponent implements OnInit {
 
     public deleteCustomer() {
         if (this.customer) {
-            this.customer.delete_f = 1;
+            this.customer.is_deleted = 1;
             this.customersService.editCustomer(this.customer)
                 .subscribe(res => {
                     this.searchCustomer();

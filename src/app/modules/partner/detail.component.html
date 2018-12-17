@@ -23,6 +23,25 @@
                     <div class="col-md-12 mb-4">
                         <form novalidate #form="ngForm" class="form-horizontal">
                             <div class="form-group row">
+                                <label class="col-md-3 col-form-label" for="code">
+                                    Code <code class="highlighter-rouge">*</code>
+                                </label>
+                                <div class="col-md-9">
+                                    <input [(ngModel)]="partnerService.partner.code" #code="ngModel" type="text"
+                                           id="code"
+                                           name="code"
+                                           required
+                                           class="form-control"
+                                           placeholder="Code">
+                                    <div [hidden]="code.valid || code.untouched">
+                                <span *ngIf="code.errors && code.errors.required"
+                                      class="badge badge-warning">
+                                    Phải nhập Code!
+                                </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
                                 <label class="col-md-3 col-form-label" for="email">
                                     Email <code class="highlighter-rouge">*</code>
                                 </label>

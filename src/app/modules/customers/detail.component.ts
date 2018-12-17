@@ -19,13 +19,13 @@ export class DetailComponent implements OnInit {
         this.backendUrl = backendUrl;
         this.customer = {
             id: null
-            , code: null
-            , name: null
-            , phone: null
-            , email: null
-            , address: null
-            , note: null
-            , delete_f: 0
+            , customer_name: null
+            , customer_tel: null
+            , customer_addr: null
+            , customer_dob: null
+            , is_deleted: 0
+            , created_at: null
+            , updated_at: null
         };
         this.route.params.subscribe(params => {
             if (params['id']) {

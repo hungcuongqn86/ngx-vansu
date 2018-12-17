@@ -34,6 +34,7 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
+                            <th>Code</th>
                             <th>Email</th>
                             <th>Token</th>
                             <th class="text-right">Cú pháp thanh toán</th>
@@ -42,6 +43,7 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let item of partners">
+                            <td>{{item.code}}</td>
                             <td>{{item.email}}</td>
                             <td>{{item.token}}</td>
                             <td class="text-right">{{item.arr_options.payment_syntax}}</td>

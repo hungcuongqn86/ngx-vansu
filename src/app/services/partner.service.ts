@@ -28,6 +28,7 @@ export class PartnerService {
     reset() {
         this.partner = {
             id: null
+            , code: null
             , email: null
             , token: null
             , options: null

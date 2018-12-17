@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewEncapsulation, TemplateRef} from '@angular/core';
 import {Router} from '@angular/router';
-import {Order, OrdersService} from '../../services/orders.service';
+import {OrdersService} from '../../services/orders.service';
+import {Order} from '../../models/Order';
 
 @Component({
     selector: 'app-orders',

@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {SimService, Telco} from '../../../services/sim.service';
+import {SimService} from '../../../services/sim.service';
+import {Telco} from '../../../models/Sim';
 import {AgencyService} from '../../../services/agency.service';
 import {Agency} from '../../../models/Agency';
 

@@ -1,7 +1,7 @@
 import {Agency} from './Agency';
 import {Order} from './Order';
 
-interface Telco {
+export interface Telco {
     id: number;
     telco_name: string;
     created_at: string;
